@@ -6,6 +6,7 @@ import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.Usuario;
 import es.uam.eps.padsof.gesture.exception.AutorizacionIncorrectaException;
 import es.uam.eps.padsof.gesture.gui.controller.LoginController;
+import es.uam.eps.padsof.gesture.gui.model.SubastaModel;
 
 /**
  * TODO: Descripcion del tipo
@@ -29,7 +30,7 @@ public class ViewsTester {
 		precioFrame.add(new PrecioView(precio));
 		precioFrame.setVisible(true);*/
 		
-		MainFrame mainFrame = new MainFrame();
+		/*MainFrame mainFrame = new MainFrame();
 		
 		Tienda tienda = new Tienda();
 		tienda.log("gerente", "roottoor");
@@ -50,7 +51,7 @@ public class ViewsTester {
 		JFrame loginFrame = new JFrame("Login de Usuario");
 		loginFrame.setSize(320, 150);
 		loginFrame.add(ctrl.getView());
-		loginFrame.setVisible(true);
+		loginFrame.setVisible(true);*/
 		
 		// RegistrarClienteModel model = new RegistrarClienteModel();
 		/*RegistrarClienteView view = new RegistrarClienteView();
@@ -60,6 +61,15 @@ public class ViewsTester {
 		registrarClienteFrame.setSize(600, 400);
 		registrarClienteFrame.add(view);
 		registrarClienteFrame.setVisible(true);*/
+		
+		SubastaModel model = new SubastaModel();
+		SubastaView view = new SubastaView();
+		
+			
+		JFrame SubastaFrame = new JFrame("Registrar Subasta");
+		SubastaFrame.setSize(600, 400);
+		SubastaFrame.add(view);
+		SubastaFrame.setVisible(true);
 	}
 
 }
