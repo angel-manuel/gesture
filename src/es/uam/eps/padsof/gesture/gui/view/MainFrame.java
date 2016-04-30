@@ -1,15 +1,9 @@
 package es.uam.eps.padsof.gesture.gui.view;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import es.uam.eps.padsof.gesture.gui.controller.Controller;
-import es.uam.eps.padsof.gesture.gui.controller.LoginController;
-import es.uam.eps.padsof.gesture.gui.model.LoginModel;
 
 /**
  * TODO: Descripcion del tipo
@@ -19,6 +13,7 @@ import es.uam.eps.padsof.gesture.gui.model.LoginModel;
  *
  */
 public class MainFrame extends JFrame {
+	private static final long serialVersionUID = 2314913083107430405L;
 	private Controller controladorActual;
 	
 	public MainFrame() {

@@ -7,8 +7,6 @@ import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
-import javax.swing.JTabbedPane;
-
 /**
  * TODO: Descripcion del tipo
  *
@@ -17,6 +15,7 @@ import javax.swing.JTabbedPane;
  *
  */
 public class AutoView extends JPanel {
+	private static final long serialVersionUID = -9187517647646743956L;
 	private final JPanel panel_2 = new JPanel();
 	private JTextField textField;
 	private JPasswordField passwordField;

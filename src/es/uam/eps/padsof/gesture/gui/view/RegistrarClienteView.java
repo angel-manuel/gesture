@@ -1,9 +1,5 @@
 package es.uam.eps.padsof.gesture.gui.view;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
@@ -12,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
@@ -26,6 +21,7 @@ import es.uam.eps.padsof.gesture.PoliticaNotificacion;
  *
  */
 public class RegistrarClienteView extends JPanel{
+	private static final long serialVersionUID = 7511588629854862824L;
 	private final JTextField nombreFld;
 	private final JTextField apellidosFld;
 	private final JTextField emailFld;

@@ -1,15 +1,12 @@
 package es.uam.eps.padsof.gesture.gui.controller;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import es.uam.eps.padsof.gesture.Usuario;
 import es.uam.eps.padsof.gesture.Tienda;
-import es.uam.eps.padsof.gesture.gui.model.LoginModel;
 import es.uam.eps.padsof.gesture.gui.view.LoginView;
 
 /**

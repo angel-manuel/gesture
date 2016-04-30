@@ -17,6 +17,7 @@ import es.uam.eps.padsof.gesture.balance.Precio;
  *
  */
 public class PrecioView extends JPanel {
+	private static final long serialVersionUID = 9110665944857611862L;
 	private final Precio precio;
 	
 	public PrecioView(Precio precio) {

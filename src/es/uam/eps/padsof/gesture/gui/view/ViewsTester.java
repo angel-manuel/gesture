@@ -2,18 +2,10 @@ package es.uam.eps.padsof.gesture.gui.view;
 
 import javax.swing.JFrame;
 
-import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
-import es.uam.eps.padsof.gesture.Cliente;
-import es.uam.eps.padsof.gesture.PoliticaNotificacion;
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.Usuario;
-import es.uam.eps.padsof.gesture.balance.ConceptoPrecio;
-import es.uam.eps.padsof.gesture.balance.Precio;
 import es.uam.eps.padsof.gesture.exception.AutorizacionIncorrectaException;
 import es.uam.eps.padsof.gesture.gui.controller.LoginController;
-import es.uam.eps.padsof.gesture.gui.controller.RegistrarClienteController;
-import es.uam.eps.padsof.gesture.gui.model.LoginModel;
-import es.uam.eps.padsof.gesture.gui.model.RegistrarClienteModel;
 
 /**
  * TODO: Descripcion del tipo

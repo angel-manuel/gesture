@@ -7,11 +7,7 @@ import javax.swing.JOptionPane;
 
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import es.uam.eps.padsof.gesture.Cliente;
-import es.uam.eps.padsof.gesture.PoliticaNotificacion;
 import es.uam.eps.padsof.gesture.Tienda;
-import es.uam.eps.padsof.gesture.gui.model.LoginModel;
-import es.uam.eps.padsof.gesture.gui.model.RegistrarClienteModel;
-import es.uam.eps.padsof.gesture.gui.view.LoginView;
 import es.uam.eps.padsof.gesture.gui.view.RegistrarClienteView;
 
 /**
