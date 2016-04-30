@@ -1,0 +1,10 @@
+M;BOTELLA CRISTAL S.XIX MANO CON REVOLVER;18xx;21/12/2015;55.00;125.00;5
+M;Máscara arte étnico africana de talla de madera;0;11/05/2013;2.00;100.00;10
+V;Altar antiguo policromado procedente de Toro (Zamora);1941;07/07/2012;874.00;1200.00;37;92;83;203
+A;Niña con flores (Óleo);185x;08/10/2014;150.00;900.00;Meyer Von Bremen;Pintura;N
+A;Mater Amabilis Ora Pro Novis;1951;15/09/2014;65.00;120.00;Joan Llimona Bruguera;Grabado;S
+A;Niña 1 en bronce;19xx;10/8/2014;200.00;600.00;Escuela Francesa;Escultura;N
+A;Niña 2 en bronce;19xx;10/8/2014;200.00;600.00;Escuela Francesa;Escultura;N
+V;Pedestal en caoba;198x;7/7/2013;50.00;100.00;12;110;45;45
+M;Dos lámparas francesa de mesa;0;21/12/2014;60.00;120.00;0
+V;Escaño de 4 plazas;1916;15/1/2016;75.00;100.00;32;86;175;50
