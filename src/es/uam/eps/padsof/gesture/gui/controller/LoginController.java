@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import es.uam.eps.padsof.gesture.Usuario;
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.gui.view.LoginView;
 
@@ -18,7 +17,6 @@ import es.uam.eps.padsof.gesture.gui.view.LoginView;
  */
 public class LoginController extends Controller {
 	private final Tienda tienda;
-	private Usuario model = null;
 	private LoginView view;
 	
 	public LoginController(Tienda tienda, LoginView view) {

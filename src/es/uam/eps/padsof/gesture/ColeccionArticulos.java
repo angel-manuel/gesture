@@ -3,6 +3,7 @@ package es.uam.eps.padsof.gesture;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.stream.Stream;
 
 /**
  * Un colección inmutable de artículos que se puede filtrar
@@ -122,6 +123,10 @@ public class ColeccionArticulos implements Serializable, Iterable<Articulo> {
 	@Override
 	public Iterator<Articulo> iterator() {
 		return articulos.iterator();
+	}
+	
+	public Stream<Articulo> stream() {
+		return articulos.stream();
 	}
 	
 	/**

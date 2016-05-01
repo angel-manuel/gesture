@@ -40,10 +40,8 @@ public class RegistrarClienteController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		Cliente cliente;
-		
 		try {
-			cliente = new Cliente(
+			model = new Cliente(
 				view.getNombre(),
 				view.getApellidos(),
 				view.getEmail(),
@@ -56,9 +54,7 @@ public class RegistrarClienteController implements ActionListener {
 			return;
 		}
 		
-		model = cliente;
-		
-		tienda.añadirCliente(cliente);
+		tienda.añadirCliente(model);
 	}
 	
 	
