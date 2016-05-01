@@ -2,6 +2,9 @@ package es.uam.eps.padsof.gesture.gui.view;
 
 import java.util.Date;
 
+import javax.swing.JFrame;
+
+import es.uam.eps.padsof.gesture.Articulo;
 import es.uam.eps.padsof.gesture.ArticuloVoluminoso;
 import es.uam.eps.padsof.gesture.Menudencia;
 import es.uam.eps.padsof.gesture.Tienda;
@@ -31,7 +34,7 @@ public class ViewsTester {
 		precioFrame.add(new PrecioView(precio));
 		precioFrame.setVisible(true);*/
 		
-		MainFrame mainFrame = new MainFrame();
+		/*MainFrame mainFrame = new MainFrame();
 		
 		Tienda tienda = new Tienda();
 		tienda.log("gerente", "roottoor");
@@ -54,7 +57,7 @@ public class ViewsTester {
 		
 		mainFrame.setControladorActual(new VoidController(new ColeccionArticulosView(tienda.getInventario())));
 		mainFrame.pack();
-		mainFrame.setVisible(true);
+		mainFrame.setVisible(true);*/
 		
 		/*JFrame invenFrame = new JFrame("Invent");
 		invenFrame.setSize(700, 700);
@@ -90,6 +93,14 @@ public class ViewsTester {
 		SubastaFrame.setSize(600, 400);
 		SubastaFrame.add(view);
 		SubastaFrame.setVisible(true);*/
+		
+		Menudencia menudencia = new Menudencia("Boina", 50.0, "1980", new Date(new Date().getTime()), 40.0, 10);
+		
+		
+		JFrame MenudenciaFrame = new JFrame();
+		MenudenciaFrame.setSize(300, 400);
+		MenudenciaFrame.add(new MenudenciaView(menudencia));
+		MenudenciaFrame.setVisible(true);
 	}
 
 }

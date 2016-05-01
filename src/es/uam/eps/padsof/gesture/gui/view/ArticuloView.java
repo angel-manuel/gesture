@@ -2,6 +2,8 @@ package es.uam.eps.padsof.gesture.gui.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -30,11 +32,23 @@ public class ArticuloView extends View {
 	
 	public void render() {
 		this.removeAll();
-		
+		String precioBase;
+		String fechaAdquisicion;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String costeAdquisicion;
 
-		JLabel articuloLbl = new JLabel("Articulo: " + articulo.toString());
-		articuloLbl.setForeground(new Color(0, 180, 0));
+		JLabel articuloLbl = new JLabel("Articulo: ");
+		JLabel descripcionLbl = new JLabel(articulo.getDescripcion());
+		JLabel precioBaseLbl = new JLabel (precioBase = Double.toString(articulo.getPrecioBase()));
+		JLabel añoLbl = new JLabel (articulo.getAño());
+		JLabel fechaAdquisicionLbl = new JLabel (fechaAdquisicion = sdf.format(articulo.getFechaAdquisicion()));
+		JLabel costeAdquisicionLbl = new JLabel (costeAdquisicion = Double.toString(articulo.getCosteAdquisicion()));
 		this.add(articuloLbl);
+		this.add(descripcionLbl);
+		this.add(precioBaseLbl);
+		this.add(añoLbl);
+		this.add(fechaAdquisicionLbl);
+		this.add(costeAdquisicionLbl);
 		
 		this.setSize(new Dimension(200, 24*this.getComponentCount()));
 	}
