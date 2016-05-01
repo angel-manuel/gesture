@@ -30,6 +30,10 @@ public class ColeccionArticulos extends AbstractTableModel implements Serializab
 		this.articulos = new ArrayList<>();
 	}
 	
+	public Articulo get(int index) {
+		return articulos.get(index);
+	}
+	
 	/**
 	 * Contiene artículo.
 	 *

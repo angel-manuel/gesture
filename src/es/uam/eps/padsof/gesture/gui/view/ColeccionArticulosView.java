@@ -1,16 +1,24 @@
 package es.uam.eps.padsof.gesture.gui.view;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
+import es.uam.eps.padsof.gesture.Articulo;
 import es.uam.eps.padsof.gesture.ColeccionArticulos;
 
 public class ColeccionArticulosView extends View {
 	private static final long serialVersionUID = -5082367301518818759L;
 	private final ColeccionArticulos coleccion;
 	private JTable table;
+	private List<Consumer<Articulo>> selectionListeners = new ArrayList<>();
 	
 	public ColeccionArticulosView(ColeccionArticulos coleccion) {
 		super();
@@ -19,8 +27,36 @@ public class ColeccionArticulosView extends View {
 		this.setSize(new Dimension(300, 300));
 		
 		table = new JTable(this.coleccion);
-		table.setPreferredScrollableViewportSize(new Dimension(500, 200));
+		
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.getSelectionModel()
+		.addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				Articulo articulo = getSelectedArticulo();
+				if (articulo != null) {
+					for (Consumer<Articulo> listener: selectionListeners) {
+						listener.accept(articulo);
+					}
+				}
+			}});
+		
+		//table.setPreferredScrollableViewportSize(new Dimension(500, 200));
 		this.add(new JScrollPane(table));
-		this.setPreferredSize(new Dimension(600, 300));
+		this.setPreferredSize(new Dimension(500, 200));
+	}
+	
+	public Articulo getSelectedArticulo() {
+		int selectedRow = table.getSelectedRow();
+		
+		if (selectedRow >= 0) {
+			return coleccion.get(selectedRow);
+		} else {
+			return null;
+		}
+	}
+	
+	public void addSelectionListener(Consumer<Articulo> listener) {
+		selectionListeners.add(listener);
 	}
 }

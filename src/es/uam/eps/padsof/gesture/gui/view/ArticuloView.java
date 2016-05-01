@@ -7,8 +7,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 
 import es.uam.eps.padsof.gesture.Articulo;
-import es.uam.eps.padsof.gesture.balance.ConceptoPrecio;
-import es.uam.eps.padsof.gesture.balance.Precio;
 
 /**
  * TODO: Descripcion del tipo
