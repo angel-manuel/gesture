@@ -1,10 +1,7 @@
 package es.uam.eps.padsof.gesture.gui.view;
 
-import java.util.Date;
-
 import javax.swing.JFrame;
 
-import es.uam.eps.padsof.gesture.Menudencia;
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.Usuario;
 import es.uam.eps.padsof.gesture.exception.AutorizacionIncorrectaException;
@@ -72,6 +69,15 @@ public class ViewsTester {
 		registrarClienteFrame.setSize(600, 400);
 		registrarClienteFrame.add(view);
 		registrarClienteFrame.setVisible(true);*/
+		
+		SubastaModel model = new SubastaModel();
+		SubastaView view = new SubastaView();
+		
+			
+		JFrame SubastaFrame = new JFrame("Registrar Subasta");
+		SubastaFrame.setSize(600, 400);
+		SubastaFrame.add(view);
+		SubastaFrame.setVisible(true);
 	}
 
 }
