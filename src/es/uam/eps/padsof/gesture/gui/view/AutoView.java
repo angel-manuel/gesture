@@ -14,7 +14,7 @@ import javax.swing.JButton;
  * @author Ángel Manuel Martín
  *
  */
-public class AutoView extends JPanel {
+public class AutoView extends View {
 	private static final long serialVersionUID = -9187517647646743956L;
 	private final JPanel panel_2 = new JPanel();
 	private JTextField textField;

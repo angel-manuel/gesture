@@ -2,7 +2,6 @@ package es.uam.eps.padsof.gesture.gui.view;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -16,7 +15,7 @@ import es.uam.eps.padsof.gesture.balance.Precio;
  * @author Ángel Manuel Martín
  *
  */
-public class PrecioView extends JPanel {
+public class PrecioView extends View {
 	private static final long serialVersionUID = 9110665944857611862L;
 	private final Precio precio;
 	

@@ -2,7 +2,6 @@ package es.uam.eps.padsof.gesture.gui.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import es.uam.eps.padsof.gesture.PoliticaNotificacion;
+import es.uam.eps.padsof.gesture.gui.controller.Controller;
 
 /**
  * TODO: Descripcion del tipo
@@ -20,7 +20,7 @@ import es.uam.eps.padsof.gesture.PoliticaNotificacion;
  * @author Ángel Manuel Martín
  *
  */
-public class RegistrarClienteView extends JPanel{
+public class RegistrarClienteView extends View {
 	private static final long serialVersionUID = 7511588629854862824L;
 	private final JTextField nombreFld;
 	private final JTextField apellidosFld;
@@ -115,7 +115,8 @@ setLayout(new BorderLayout());
 		setMaximumSize(new Dimension(300, 80));
 	}
 
-	public void setControlador(ActionListener c) {
+	@Override
+	public void setControlador(Controller c) {
 		nombreFld.addActionListener(c);
 		apellidosFld.addActionListener(c);
 		emailFld.addActionListener(c);

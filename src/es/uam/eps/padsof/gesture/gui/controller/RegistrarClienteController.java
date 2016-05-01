@@ -1,7 +1,6 @@
 package es.uam.eps.padsof.gesture.gui.controller;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
@@ -17,10 +16,9 @@ import es.uam.eps.padsof.gesture.gui.view.RegistrarClienteView;
  * @author Ángel Manuel Martín
  *
  */
-public class RegistrarClienteController implements ActionListener {
+public class RegistrarClienteController extends Controller {
 	private final Tienda tienda;
 	private Cliente model = null;
-	private final RegistrarClienteView view;
 	
 	/**
 	 * Constructor de RegistrarClienteController
@@ -28,10 +26,8 @@ public class RegistrarClienteController implements ActionListener {
 	 * @param view
 	 */
 	public RegistrarClienteController(Tienda tienda, RegistrarClienteView view) {
+		super(view);
 		this.tienda = tienda;
-		this.view = view;
-		
-		view.setControlador(this);
 	}
 
 	/* (non-Javadoc)
@@ -39,6 +35,7 @@ public class RegistrarClienteController implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		RegistrarClienteView view = (RegistrarClienteView)this.view;
 		
 		try {
 			model = new Cliente(

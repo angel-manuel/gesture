@@ -22,7 +22,7 @@ import javax.swing.event.DocumentListener;
  * @author Ángel Manuel Martín
  *
  */
-public class LoginView extends JPanel {
+public class LoginView extends View {
 	private static final long serialVersionUID = 437834601322500829L;
 
 	public static final String USER_CHANGED_COMMAND = "user changed";

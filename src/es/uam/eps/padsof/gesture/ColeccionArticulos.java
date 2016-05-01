@@ -5,14 +5,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.stream.Stream;
 
+import javax.swing.table.AbstractTableModel;
+
 /**
  * Un colección inmutable de artículos que se puede filtrar
  *
  * @author Borja González Farías
  * @author Ángel Manuel Martín
  */
-public class ColeccionArticulos implements Serializable, Iterable<Articulo> {
+public class ColeccionArticulos extends AbstractTableModel implements Serializable, Iterable<Articulo> {
 	private static final long serialVersionUID = 20160326L;
+	private static final String[] COLS = { "Tipo", "Descripcion", "Año", "Precio" };
+	
 	protected ArrayList<Articulo> articulos;
 	
 	private ColeccionArticulos(ArrayList<Articulo> articulos) {
@@ -134,5 +138,42 @@ public class ColeccionArticulos implements Serializable, Iterable<Articulo> {
 	 */
 	public Articulo first() {
 		return iterator().next();
+	}
+	
+	@Override
+	public String getColumnName(int column) {
+		return COLS[column];
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.swing.table.TableModel#getColumnCount()
+	 */
+	@Override
+	public int getColumnCount() {
+		return COLS.length;
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.swing.table.TableModel#getRowCount()
+	 */
+	@Override
+	public int getRowCount() {
+		return articulos.size();
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.swing.table.TableModel#getValueAt(int, int)
+	 */
+	@Override
+	public Object getValueAt(int row, int column) {
+		Articulo art = articulos.get(row);
+		Object[] artRow = {
+				art.getTipo().toString(),
+				art.getDescripcion(),
+				art.getAño(),
+				art.getPrecioBase()
+		};
+		
+		return artRow[column];
 	}
 }

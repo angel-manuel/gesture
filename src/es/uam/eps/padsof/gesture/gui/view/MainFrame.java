@@ -19,8 +19,6 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		super("Gesture");
 		setLayout(new BorderLayout());
-		setSize(800, 600);
-		setVisible(true);
 	}
 
 	/**
@@ -39,12 +37,11 @@ public class MainFrame extends JFrame {
 	 */
 	public void setControladorActual(Controller controlador) {
 		if (this.controladorActual != null) {
+			this.remove(this.controladorActual.getView());
 			this.controladorActual.detachView();
 		}
 		
 		this.controladorActual = controlador;
-		this.removeAll();
-		this.add(controlador.getView(), BorderLayout.CENTER);
-		this.repaint();
+		this.add(controlador.getView());
 	}
 }

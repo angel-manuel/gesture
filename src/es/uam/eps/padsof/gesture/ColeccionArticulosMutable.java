@@ -18,5 +18,6 @@ public class ColeccionArticulosMutable extends ColeccionArticulos implements Ser
 	 */
 	public void añadirArticulo(Articulo articulo) {
 		articulos.add(articulo);
+		this.fireTableDataChanged();
 	}
 }

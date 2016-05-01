@@ -2,14 +2,12 @@ package es.uam.eps.padsof.gesture.gui.view;
 
 import java.util.Date;
 
-import javax.swing.JFrame;
-
+import es.uam.eps.padsof.gesture.ArticuloVoluminoso;
 import es.uam.eps.padsof.gesture.Menudencia;
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.Usuario;
 import es.uam.eps.padsof.gesture.exception.AutorizacionIncorrectaException;
-import es.uam.eps.padsof.gesture.gui.controller.LoginController;
-import es.uam.eps.padsof.gesture.gui.model.SubastaModel;
+import es.uam.eps.padsof.gesture.gui.controller.VoidController;
 
 /**
  * TODO: Descripcion del tipo
@@ -33,7 +31,7 @@ public class ViewsTester {
 		precioFrame.add(new PrecioView(precio));
 		precioFrame.setVisible(true);*/
 		
-		//MainFrame mainFrame = new MainFrame();
+		MainFrame mainFrame = new MainFrame();
 		
 		Tienda tienda = new Tienda();
 		tienda.log("gerente", "roottoor");
@@ -43,15 +41,25 @@ public class ViewsTester {
 			e.printStackTrace();
 		}
 		
-		tienda.getInventario().añadirArticulo(new Menudencia("cosa", 0, "", new Date(), 0, 0));
-		tienda.getInventario().añadirArticulo(new Menudencia("Llave", 30, "", new Date(), 30, 03));
+		tienda.getInventario().añadirArticulo(new Menudencia("Cosa", 50, "1994", new Date(), 0, 0));
+		tienda.getInventario().añadirArticulo(new Menudencia("Llave", 30, "1945", new Date(), 30, 03));
+		tienda.getInventario().añadirArticulo(new Menudencia("Reloj", 230, "1955", new Date(), 30, 03));
+		tienda.getInventario().añadirArticulo(new ArticuloVoluminoso("Piedra", 3230, "985", new Date(), 30, 500, 5, 5, 5));
+		
+		for (int i = 0; i < 10; ++i) {
+			tienda.getInventario().añadirArticulo(new Menudencia("Basura", 1, "Desconocido", new Date(), 30, 03));
+		}
 		
 		tienda.logout();
 		
-		JFrame invenFrame = new JFrame("Invent");
+		mainFrame.setControladorActual(new VoidController(new ColeccionArticulosView(tienda.getInventario())));
+		mainFrame.pack();
+		mainFrame.setVisible(true);
+		
+		/*JFrame invenFrame = new JFrame("Invent");
 		invenFrame.setSize(700, 700);
 		invenFrame.add(new ColeccionArticulosView(tienda.getInventario()));
-		invenFrame.setVisible(true);
+		invenFrame.setVisible(true);*/
 
 		/*LoginView view = new LoginView();
 		LoginController ctrl = new LoginController(tienda, view);
@@ -74,14 +82,14 @@ public class ViewsTester {
 		registrarClienteFrame.add(view);
 		registrarClienteFrame.setVisible(true);*/
 		
-		SubastaModel model = new SubastaModel();
+		/*SubastaModel model = new SubastaModel();
 		SubastaView view = new SubastaView();
 		
 			
 		JFrame SubastaFrame = new JFrame("Registrar Subasta");
 		SubastaFrame.setSize(600, 400);
 		SubastaFrame.add(view);
-		SubastaFrame.setVisible(true);
+		SubastaFrame.setVisible(true);*/
 	}
 
 }

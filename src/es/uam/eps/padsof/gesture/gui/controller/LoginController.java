@@ -3,7 +3,6 @@ package es.uam.eps.padsof.gesture.gui.controller;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.gui.view.LoginView;
@@ -17,17 +16,17 @@ import es.uam.eps.padsof.gesture.gui.view.LoginView;
  */
 public class LoginController extends Controller {
 	private final Tienda tienda;
-	private LoginView view;
 	
 	public LoginController(Tienda tienda, LoginView view) {
+		super(view);
 		this.tienda = tienda;
-		this.view = view;
 		
 		view.setControlador(this);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		String comm = e.getActionCommand();
+		LoginView view = (LoginView)this.view;
 		
 		switch (comm) {
 			case LoginView.USER_CHANGED_COMMAND:
@@ -44,15 +43,5 @@ public class LoginController extends Controller {
 				}
 				break;
 		}
-	}
-
-	@Override
-	public JPanel getView() {
-		return view;
-	}
-
-	@Override
-	public void detachView() {
-		view = null;	
 	}
 }

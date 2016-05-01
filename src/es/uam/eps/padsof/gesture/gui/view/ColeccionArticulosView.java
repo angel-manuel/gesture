@@ -1,22 +1,16 @@
 package es.uam.eps.padsof.gesture.gui.view;
 
 import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
-import es.uam.eps.padsof.gesture.Articulo;
 import es.uam.eps.padsof.gesture.ColeccionArticulos;
 
-public class ColeccionArticulosView extends JPanel {
+public class ColeccionArticulosView extends View {
 	private static final long serialVersionUID = -5082367301518818759L;
 	private final ColeccionArticulos coleccion;
-	private JTable tabla;
+	private JTable table;
 	
 	public ColeccionArticulosView(ColeccionArticulos coleccion) {
 		super();
@@ -24,27 +18,9 @@ public class ColeccionArticulosView extends JPanel {
 		this.setPreferredSize(new Dimension(500, 80));
 		this.setSize(new Dimension(300, 300));
 		
-		this.render();
-	}
-	
-	private void render() {
-		DefaultTableModel tablaModel = new DefaultTableModel();
-		tablaModel.addColumn("Tipo");
-		tablaModel.addColumn("Descripcion");
-		tablaModel.addColumn("Precio Base");
-		
-		for (Articulo articulo: coleccion) {
-			Object[] row = { 
-					articulo.getTipo().toString(),
-					articulo.getDescripcion(),
-					articulo.getPrecioBase() };
-			tablaModel.addRow(row);
-		}
-		
-		tabla = new JTable(tablaModel);
-		
-		tabla.setPreferredScrollableViewportSize(new Dimension(500, 80));
-		
-		this.add(tabla);
+		table = new JTable(this.coleccion);
+		table.setPreferredScrollableViewportSize(new Dimension(500, 200));
+		this.add(new JScrollPane(table));
+		this.setPreferredSize(new Dimension(600, 300));
 	}
 }

@@ -2,7 +2,6 @@ package es.uam.eps.padsof.gesture.gui.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,6 +10,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import es.uam.eps.padsof.gesture.gui.controller.Controller;
+
 /**
  * TODO: Descripcion del tipo
  *
@@ -18,7 +19,7 @@ import javax.swing.SpringLayout;
  * @author Ángel Manuel Martín
  *
  */
-public class SubastaView extends JPanel {
+public class SubastaView extends View {
 	private static final long serialVersionUID = 1967547261297876738L;
 	private final JTextField precioSalidaFld;
 	private final JTextField objetoFld;
@@ -78,7 +79,8 @@ public class SubastaView extends JPanel {
 		setPreferredSize(new Dimension(300, 80));
 	}
 	
-	public void setControlador(ActionListener c) {
+	@Override
+	public void setControlador(Controller c) {
 		precioSalidaFld.addActionListener(c);
 		objetoFld.addActionListener(c);
 	}
