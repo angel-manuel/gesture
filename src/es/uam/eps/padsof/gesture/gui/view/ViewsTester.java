@@ -1,11 +1,15 @@
 package es.uam.eps.padsof.gesture.gui.view;
 
+import java.util.Date;
+
 import javax.swing.JFrame;
 
+import es.uam.eps.padsof.gesture.Menudencia;
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.Usuario;
 import es.uam.eps.padsof.gesture.exception.AutorizacionIncorrectaException;
 import es.uam.eps.padsof.gesture.gui.controller.LoginController;
+import es.uam.eps.padsof.gesture.gui.model.SubastaModel;
 
 /**
  * TODO: Descripcion del tipo
