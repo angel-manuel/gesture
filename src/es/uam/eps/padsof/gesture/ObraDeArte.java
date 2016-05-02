@@ -57,6 +57,28 @@ public class ObraDeArte extends Articulo implements Subastable, Serializable {
 	public TipoDeArticulo getTipo() {
 		return TipoDeArticulo.ObraDeArte;
 	}
+	/**
+	 * Obtiene el autor de la obra
+	 * @return autor Autor
+	 */
+	public String getAutor(){
+		return autor;
+	}
+	
+	/**
+	 * Obtiene el certificado
+	 * @return true si tiene certificado de autenticidad, false en caso contrario
+	 */
+	public boolean getCertificado(){
+		return certificado;
+	}
+	/**
+	 * Obtiene el tipo de obra
+	 * @return tipoDeObra Tipo de obra
+	 */
+	public TipoDeObra getTipoObra(){
+		return tipoDeObra;
+	}
 
 	/**
 	 * Getter de destino.

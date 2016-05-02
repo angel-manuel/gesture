@@ -10,7 +10,9 @@ import es.uam.eps.padsof.gesture.Articulo;
 import es.uam.eps.padsof.gesture.ArticuloVoluminoso;
 import es.uam.eps.padsof.gesture.Lote;
 import es.uam.eps.padsof.gesture.Menudencia;
+import es.uam.eps.padsof.gesture.ObraDeArte;
 import es.uam.eps.padsof.gesture.Tienda;
+import es.uam.eps.padsof.gesture.TipoDeObra;
 import es.uam.eps.padsof.gesture.Usuario;
 import es.uam.eps.padsof.gesture.exception.AutorizacionIncorrectaException;
 import es.uam.eps.padsof.gesture.gui.controller.LoginController;
@@ -93,12 +95,6 @@ public class ViewsTester {
 		SubastaFrame.setSize(600, 400);
 		SubastaFrame.add(view);
 		SubastaFrame.setVisible(true);*/
-		
-		/*Menudencia menudencia = new Menudencia("Boina", 50.0, "1980", new Date(new Date().getTime()), 40.0, 10);
-		
-		MainFrame menudenciaFrame = new MainFrame();
-		menudenciaFrame.setControladorActual(new VoidController(new MenudenciaView(menudencia)));
-		menudenciaFrame.setVisible(true);*/
 	}
 
 }

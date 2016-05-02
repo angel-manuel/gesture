@@ -15,23 +15,22 @@ import es.uam.eps.padsof.gesture.subasta.Subasta;
  * @author Ángel Manuel Martín
  *
  */
-public class SubastaController implements ActionListener {
+public class SubastaController extends Controller {
 	private final Tienda tienda;
-	private final SubastaView view;
 	private Date ultimoDia;
 	
 	public SubastaController (Tienda tienda, SubastaView view) {
+		super(view);
 		this.tienda = tienda;
-		this.view = view;
 		
 		/*view.setControlador(this);*/
 	}
 	
 	public void actionPerformed(ActionEvent e){
-		/*Subasta subasta;
+		SubastaView view = (SubastaView)this.view;
 		
 		
-		try {
+		/*try {
 			subasta = new Subasta(
 					
 		}*/
