@@ -1,6 +1,8 @@
 package es.uam.eps.padsof.gesture.gui.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -39,12 +41,15 @@ public class MainFrame extends JFrame {
 	 */
 	public void setControladorActual(Controller controlador) {
 		if (this.controladorActual != null) {
-			this.remove(this.controladorActual.getView());
 			this.controladorActual.detachView();
 		}
 		
+		this.getContentPane().removeAll();
 		this.controladorActual = controlador;
-		this.add(controlador.getView());
+		this.controladorActual.setMainFrame(this);
+		this.getContentPane().add(controlador.getView());
+		Dimension minSize = controlador.getView().getMinimumSize();
+		this.setMinimumSize(minSize);
 		this.pack();
 	}
 }

@@ -1,19 +1,22 @@
 package es.uam.eps.padsof.gesture.gui.view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.Spring;
 import javax.swing.SpringLayout;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
+import es.uam.eps.padsof.gesture.gui.controller.Controller;
 
 /**
  * TODO: Descripcion del tipo
@@ -32,11 +35,6 @@ public class LoginView extends View {
 	private final JButton loginBtn;
 	
 	public LoginView() {
-		setLayout(new BorderLayout());
-		
-		SpringLayout layout = new SpringLayout();
-		JPanel formPanel = new JPanel(layout);
-		
 		JLabel userLbl = new JLabel("Username:");
 		userFld = new JTextField("");
 		userFld.setColumns(16);
@@ -44,42 +42,39 @@ public class LoginView extends View {
 		passFld = new JPasswordField("");
 		passFld.setColumns(16);
 		
-		layout.putConstraint(SpringLayout.WEST, userLbl, 20, SpringLayout.WEST, formPanel);
-		//layout.putConstraint(SpringLayout.NORTH, userLbl, 8, SpringLayout.NORTH, formPanel);
-		
-		layout.putConstraint(SpringLayout.WEST, userFld, 8, SpringLayout.EAST, userLbl);
-		layout.putConstraint(SpringLayout.NORTH, userFld, 5, SpringLayout.NORTH, formPanel);
-		
-		layout.putConstraint(SpringLayout.WEST, passFld, 0, SpringLayout.WEST, userFld);
-		layout.putConstraint(SpringLayout.WEST, passLbl, 0, SpringLayout.WEST, userLbl);
-		
-		//layout.putConstraint(SpringLayout.NORTH, passLbl, 15, SpringLayout.SOUTH, userLbl);
-		layout.putConstraint(SpringLayout.NORTH, passFld, 10, SpringLayout.SOUTH, userFld);
-		
-		layout.putConstraint(SpringLayout.BASELINE, userLbl, 0, SpringLayout.BASELINE, userFld);
-		layout.putConstraint(SpringLayout.BASELINE, passLbl, 0, SpringLayout.BASELINE, passFld);
+		SpringLayout layout = new SpringLayout();
+		JPanel formPanel = this;
+		setLayout(layout);
+
+		loginBtn = new JButton("Login");
 		
 		formPanel.add(userLbl);
 		formPanel.add(userFld);
 		formPanel.add(passLbl);
 		formPanel.add(passFld);
+		formPanel.add(loginBtn);
 		
-		formPanel.setPreferredSize(new Dimension(200, 50));
+		layout.putConstraint(SpringLayout.WEST, userFld, 0, SpringLayout.HORIZONTAL_CENTER, formPanel);
+		layout.putConstraint(SpringLayout.SOUTH, userFld, 0, SpringLayout.VERTICAL_CENTER, formPanel);
+		layout.putConstraint(SpringLayout.BASELINE, userLbl, 0, SpringLayout.BASELINE, userFld);
+		layout.putConstraint(SpringLayout.BASELINE, passLbl, 0, SpringLayout.BASELINE, passFld);
+		layout.putConstraint(SpringLayout.EAST, userLbl, -10, SpringLayout.WEST, userFld);
+		layout.putConstraint(SpringLayout.EAST, passLbl, -10, SpringLayout.WEST, passFld);
+		layout.putConstraint(SpringLayout.WEST, passFld, 0, SpringLayout.WEST, userFld);
+		layout.putConstraint(SpringLayout.NORTH, passFld, 10, SpringLayout.SOUTH, userFld);
+		layout.putConstraint(SpringLayout.NORTH, loginBtn, 15, SpringLayout.SOUTH, passFld);
+		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, loginBtn, 0, SpringLayout.HORIZONTAL_CENTER, formPanel);
 		
-		add(formPanel, BorderLayout.CENTER);
+		//layout.putConstraint(SpringLayout.EAST, formPanel, 0, SpringLayout.EAST, userFld);
 		
-		JPanel loginPanel = new JPanel();
-		loginBtn = new JButton("Login");
-		loginPanel.add(loginBtn);
-		add(loginPanel, BorderLayout.SOUTH);
-		
-		setPreferredSize(new Dimension(300, 80));
-		/*
-		setMinimumSize(new Dimension(300, 80));
-		setMaximumSize(new Dimension(300, 80));*/
+		Dimension minSize = layout.minimumLayoutSize(formPanel);
+		formPanel.setMinimumSize(minSize);
+		formPanel.setPreferredSize(new Dimension(400, 200));
+		formPanel.setBorder(new LineBorder(new Color(200, 80, 0), 10));
 	}
 	
-	public void setControlador(final ActionListener c) {
+	@Override
+	public void setControlador(final Controller c) {
 		userFld.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) { change();}
 			public void removeUpdate(DocumentEvent e) { change(); }

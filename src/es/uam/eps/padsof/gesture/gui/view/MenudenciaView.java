@@ -1,12 +1,9 @@
 package es.uam.eps.padsof.gesture.gui.view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 
-import es.uam.eps.padsof.gesture.Articulo;
 import es.uam.eps.padsof.gesture.Menudencia;
 
 /**

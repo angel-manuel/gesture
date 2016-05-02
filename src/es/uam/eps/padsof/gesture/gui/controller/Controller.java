@@ -5,10 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import es.uam.eps.padsof.gesture.gui.view.MainFrame;
 import es.uam.eps.padsof.gesture.gui.view.View;
 
 public abstract class Controller implements ActionListener {
 	protected View view;
+	protected MainFrame frame;
 	
 	public Controller(View view) {
 		this.view = view;
@@ -25,4 +27,8 @@ public abstract class Controller implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {}
+	
+	public void setMainFrame(MainFrame frame) {
+		this.frame = frame;
+	}
 }

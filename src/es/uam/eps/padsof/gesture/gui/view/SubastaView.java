@@ -10,7 +10,10 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import es.uam.eps.padsof.gesture.Lote;
+import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.gui.controller.Controller;
+import es.uam.eps.padsof.gesture.gui.controller.LoteController;
 
 /**
  * TODO: Descripcion del tipo
@@ -22,11 +25,11 @@ import es.uam.eps.padsof.gesture.gui.controller.Controller;
 public class SubastaView extends View {
 	private static final long serialVersionUID = 1967547261297876738L;
 	private final JTextField precioSalidaFld;
-	private final JTextField objetoFld;
+	private final LoteController loteCtrl;
 	private final JSpinner duracion;
 	private final JButton iniciarBtn;
 	
-	public SubastaView(){
+	public SubastaView(Tienda tienda) {
 		setLayout(new BorderLayout());
 		
 		SpringLayout layout = new SpringLayout();
@@ -35,39 +38,34 @@ public class SubastaView extends View {
 		JLabel precioSalidaLbl = new JLabel("Precio de salida (en €): ");
 		precioSalidaFld = new JTextField("");
 		precioSalidaFld.setColumns(16);
-		JLabel objetoLbl = new JLabel("Objeto a subastar: ");
-		objetoFld = new JTextField("");
-		objetoFld.setColumns(16);
+		loteCtrl = new LoteController(tienda, new Lote());
 		JLabel duracionLbl = new JLabel("Duración de la subasta (en días): ");
 		duracion = new JSpinner();
 		duracion.setSize(10, 20);
+		JLabel loteLbl = new JLabel("Lote: ");
+		
+		formPanel.add(precioSalidaLbl);
+		formPanel.add(precioSalidaFld);
+		formPanel.add(loteLbl);
+		formPanel.add(loteCtrl.getView());
+		formPanel.add(duracionLbl);
+		formPanel.add(duracion);
 		
 		layout.putConstraint(SpringLayout.WEST, precioSalidaLbl, 20, SpringLayout.WEST, formPanel);
 		layout.putConstraint(SpringLayout.NORTH, precioSalidaLbl, 20, SpringLayout.NORTH, formPanel);
 		layout.putConstraint(SpringLayout.NORTH, precioSalidaFld, 0, SpringLayout.NORTH, precioSalidaLbl);
-
-		layout.putConstraint(SpringLayout.WEST, precioSalidaFld, 160, SpringLayout.EAST, precioSalidaLbl);
-		
-		layout.putConstraint(SpringLayout.WEST, objetoFld, 0, SpringLayout.WEST, precioSalidaFld);
-		layout.putConstraint(SpringLayout.WEST, objetoLbl, 0, SpringLayout.WEST, precioSalidaLbl);
+		layout.putConstraint(SpringLayout.WEST, precioSalidaFld, 100, SpringLayout.EAST, precioSalidaLbl);
+		layout.putConstraint(SpringLayout.WEST, loteCtrl.getView(), 20, SpringLayout.WEST, formPanel);
+		layout.putConstraint(SpringLayout.NORTH, loteLbl, 20, SpringLayout.SOUTH, precioSalidaLbl);
+		layout.putConstraint(SpringLayout.NORTH, loteCtrl.getView(), 20, SpringLayout.SOUTH, loteLbl);
+		layout.putConstraint(SpringLayout.WEST, loteLbl, 0, SpringLayout.WEST, precioSalidaLbl);
 		layout.putConstraint(SpringLayout.WEST, duracion, 0, SpringLayout.WEST, precioSalidaFld);
 		layout.putConstraint(SpringLayout.WEST, duracionLbl, 0, SpringLayout.WEST, precioSalidaLbl);
 		
-		layout.putConstraint(SpringLayout.NORTH, objetoFld, 10, SpringLayout.SOUTH, precioSalidaFld);
-		layout.putConstraint(SpringLayout.NORTH, duracion, 10, SpringLayout.SOUTH, objetoFld);
-		
 		layout.putConstraint(SpringLayout.BASELINE, precioSalidaLbl, 0, SpringLayout.BASELINE, precioSalidaFld);
-		layout.putConstraint(SpringLayout.BASELINE, objetoLbl, 0, SpringLayout.BASELINE, objetoFld);
 		layout.putConstraint(SpringLayout.BASELINE, duracionLbl, 0, SpringLayout.BASELINE, duracion);
 		
-		formPanel.add(precioSalidaLbl);
-		formPanel.add(precioSalidaFld);
-		formPanel.add(objetoLbl);
-		formPanel.add(objetoFld);
-		formPanel.add(duracionLbl);
-		formPanel.add(duracion);
-		
-		formPanel.setPreferredSize(new Dimension(200, 50));
+		//formPanel.setPreferredSize(new Dimension(200, 50));
 		
 		add(formPanel, BorderLayout.CENTER);
 		
@@ -76,21 +74,19 @@ public class SubastaView extends View {
 		subastaPanel.add(iniciarBtn);
 		add(subastaPanel, BorderLayout.SOUTH);
 		
-		setPreferredSize(new Dimension(300, 80));
+		//setPreferredSize(new Dimension(300, 80));
 	}
 	
 	@Override
 	public void setControlador(Controller c) {
-		precioSalidaFld.addActionListener(c);
-		objetoFld.addActionListener(c);
 	}
 	
 	public String getPrecioSalida(){
 		return precioSalidaFld.getText();
 	}
 	
-	public String getObjetoSubasta(){
-		return objetoFld.getText();
+	public Lote getLoteSubasta() {
+		return loteCtrl.getLote();
 	}
 	
 	public int getDuracionSubasta(){
