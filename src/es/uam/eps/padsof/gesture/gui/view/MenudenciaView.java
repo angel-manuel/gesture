@@ -18,7 +18,6 @@ import es.uam.eps.padsof.gesture.Menudencia;
  */
 public class MenudenciaView extends ArticuloView{
 	private static final long serialVersionUID = 1918961567458535540L;
-	private final Menudencia menudencia;
 	/**
 	 * Constructor de MenudenciaView
 	 *
@@ -26,13 +25,10 @@ public class MenudenciaView extends ArticuloView{
 	 */
 	public MenudenciaView(Menudencia menudencia) {
 		super(menudencia);
-		this.menudencia = menudencia;
-		
-		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-		JLabel descuentoLbl = new JLabel("Descuento " + Double.toString(menudencia.getPorcentajeDescuento()) + "%");
+		JLabel descuentoLbl = new JLabel("Descuento :" + Double.toString(menudencia.getPorcentajeDescuento()) + "%");
 		this.add(descuentoLbl);
 		
-		this.setSize(new Dimension(200, 24*this.getComponentCount()));
+		this.setPreferredSize(new Dimension(400, 16*this.getComponentCount()));
 	}
 }

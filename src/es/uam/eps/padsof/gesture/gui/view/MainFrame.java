@@ -2,6 +2,7 @@ package es.uam.eps.padsof.gesture.gui.view;
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 import es.uam.eps.padsof.gesture.gui.controller.Controller;
 
@@ -19,6 +20,7 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		super("Gesture");
 		setLayout(new BorderLayout());
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 
 	/**
@@ -43,5 +45,6 @@ public class MainFrame extends JFrame {
 		
 		this.controladorActual = controlador;
 		this.add(controlador.getView());
+		this.pack();
 	}
 }

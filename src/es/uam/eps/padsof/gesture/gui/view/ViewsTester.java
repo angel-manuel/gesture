@@ -3,6 +3,7 @@ package es.uam.eps.padsof.gesture.gui.view;
 import java.util.Date;
 
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 import es.uam.eps.padsof.gesture.Articulo;
 import es.uam.eps.padsof.gesture.ArticuloVoluminoso;
@@ -96,10 +97,9 @@ public class ViewsTester {
 		
 		Menudencia menudencia = new Menudencia("Boina", 50.0, "1980", new Date(new Date().getTime()), 40.0, 10);
 		
-		JFrame MenudenciaFrame = new JFrame();
-		MenudenciaFrame.setSize(300, 400);
-		MenudenciaFrame.add(new MenudenciaView(menudencia));
-		MenudenciaFrame.setVisible(true);
+		MainFrame menudenciaFrame = new MainFrame();
+		menudenciaFrame.setControladorActual(new VoidController(new MenudenciaView(menudencia)));
+		menudenciaFrame.setVisible(true);
 	}
 
 }
