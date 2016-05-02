@@ -17,6 +17,7 @@ import es.uam.eps.padsof.gesture.subasta.Subasta;
  */
 public class SubastaController extends Controller {
 	private final Tienda tienda;
+	
 	private Date ultimoDia;
 	
 	public SubastaController (Tienda tienda, SubastaView view) {
