@@ -57,6 +57,34 @@ public class ArticuloVoluminoso extends Articulo implements Serializable {
 			}
 		}
 	}
+	/**
+	 * Obtiene el peso del articulo
+	 * @return peso Peso
+	 */
+	public double getPeso(){
+		return peso;
+	}
+	/**
+	 * Obtiene el alto del articulo
+	 * @return alto Alto
+	 */
+	public double getAlto(){
+		return alto;
+	}
+	/**
+	 * Obtiene el ancho del articulo
+	 * @return ancho Ancho
+	 */
+	public double getAncho(){
+		return ancho;
+	}
+	/**
+	 * Obtiene el largo del articulo
+	 * @return largo Largo
+	 */
+	public double getLargo(){
+		return largo;
+	}
 	
 	/**
 	 * String que muestra por pantalla las caracteristicas del articulo voluminoso
