@@ -95,8 +95,8 @@ public class RegistrarUsuarioView extends View{
 		return new StringBuilder().append(passFld.getPassword()).toString();
 	}
 	
-	public void setClienteStatus(boolean correct) {
-		if (correct) {
+	public void setUsuarioStatus(boolean correct) {
+		if (!correct) {
 			nombreFld.setBackground(new Color(20, 170, 0));
 		} else {
 			nombreFld.setBackground(new Color(255, 255, 255));

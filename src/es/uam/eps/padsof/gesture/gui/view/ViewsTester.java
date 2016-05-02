@@ -17,8 +17,10 @@ import es.uam.eps.padsof.gesture.Usuario;
 import es.uam.eps.padsof.gesture.exception.AutorizacionIncorrectaException;
 import es.uam.eps.padsof.gesture.gui.controller.LoginController;
 import es.uam.eps.padsof.gesture.gui.controller.LoteController;
+import es.uam.eps.padsof.gesture.gui.controller.RegistrarUsuarioController;
 import es.uam.eps.padsof.gesture.gui.controller.SubastaController;
 import es.uam.eps.padsof.gesture.gui.controller.VoidController;
+import es.uam.eps.padsof.gesture.gui.model.RegistrarUsuarioModel;
 
 /**
  * TODO: Descripcion del tipo
@@ -42,7 +44,7 @@ public class ViewsTester {
 		precioFrame.add(new PrecioView(precio));
 		precioFrame.setVisible(true);*/
 		
-		Tienda tienda = new Tienda();
+		/*Tienda tienda = new Tienda();
 		tienda.log("gerente", "roottoor");
 		try {
 			tienda.añadirUsuario(new Usuario("Borja", "abcdef123"));
@@ -61,12 +63,12 @@ public class ViewsTester {
 		
 		tienda.logout();
 		
-		MainFrame mainFrame = new MainFrame();
+		MainFrame mainFrame = new MainFrame();*/
 		
 		//mainFrame.setControladorActual(new LoteController(tienda, new Lote()));
 		//mainFrame.setControladorActual(new LoginController(tienda));
-		mainFrame.setControladorActual(new SubastaController(tienda));
-		mainFrame.setVisible(true);
+		//mainFrame.setControladorActual(new SubastaController(tienda));
+		//mainFrame.setVisible(true);
 
 		/*LoginView view = new LoginView();
 		LoginController ctrl = new LoginController(tienda, view);
@@ -97,6 +99,29 @@ public class ViewsTester {
 		SubastaFrame.setSize(600, 400);
 		SubastaFrame.add(view);
 		SubastaFrame.setVisible(true);*/
+		
+		Tienda tienda = new Tienda();
+		MainFrame mainFrame = new MainFrame();
+		
+		tienda.log("gerente", "roottoor");
+		
+		try {
+			tienda.añadirUsuario(new Usuario("Borja", "abcdef123"));
+		} catch (AutorizacionIncorrectaException e) {
+			e.printStackTrace();
+		}
+		
+		RegistrarUsuarioView view = new RegistrarUsuarioView();
+		RegistrarUsuarioController ctrl = new RegistrarUsuarioController(tienda, view);
+		
+		mainFrame.setControladorActual(ctrl);
+		
+		mainFrame.setVisible(true);
+		
+		JFrame RegistrarUsuarioFrame = new JFrame("Registrar Usuario");
+		RegistrarUsuarioFrame.setSize(320, 150);
+		RegistrarUsuarioFrame.add(ctrl.getView());
+		RegistrarUsuarioFrame.setVisible(true);
 	}
 
 }
