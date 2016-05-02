@@ -47,4 +47,13 @@ public class LoteController extends Controller {
 		selectDialog.pack();
 		selectDialog.setVisible(true);
 	}
+
+	/**
+	 * Getter de lote
+	 *
+	 * @return el lote de LoteController
+	 */
+	public Lote getLote() {
+		return lote;
+	}
 }

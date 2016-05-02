@@ -17,6 +17,7 @@ import es.uam.eps.padsof.gesture.Usuario;
 import es.uam.eps.padsof.gesture.exception.AutorizacionIncorrectaException;
 import es.uam.eps.padsof.gesture.gui.controller.LoginController;
 import es.uam.eps.padsof.gesture.gui.controller.LoteController;
+import es.uam.eps.padsof.gesture.gui.controller.SubastaController;
 import es.uam.eps.padsof.gesture.gui.controller.VoidController;
 
 /**
@@ -63,7 +64,8 @@ public class ViewsTester {
 		MainFrame mainFrame = new MainFrame();
 		
 		//mainFrame.setControladorActual(new LoteController(tienda, new Lote()));
-		mainFrame.setControladorActual(new LoginController(tienda));
+		//mainFrame.setControladorActual(new LoginController(tienda));
+		mainFrame.setControladorActual(new SubastaController(tienda));
 		mainFrame.setVisible(true);
 
 		/*LoginView view = new LoginView();
