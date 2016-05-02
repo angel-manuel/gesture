@@ -96,7 +96,6 @@ public class ViewsTester {
 		
 		Menudencia menudencia = new Menudencia("Boina", 50.0, "1980", new Date(new Date().getTime()), 40.0, 10);
 		
-		
 		JFrame MenudenciaFrame = new JFrame();
 		MenudenciaFrame.setSize(300, 400);
 		MenudenciaFrame.add(new MenudenciaView(menudencia));

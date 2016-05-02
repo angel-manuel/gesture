@@ -29,18 +29,10 @@ public class MenudenciaView extends ArticuloView{
 		this.menudencia = menudencia;
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		
-		this.render();
-	}
-	public void render() {
-		this.removeAll();
-		String descuento;
-		
-		super.render();
-		JLabel descuentoLbl = new JLabel(descuento = Double.toString(menudencia.getPorcentajeDescuento()));
+
+		JLabel descuentoLbl = new JLabel("Descuento " + Double.toString(menudencia.getPorcentajeDescuento()) + "%");
 		this.add(descuentoLbl);
 		
 		this.setSize(new Dimension(200, 24*this.getComponentCount()));
 	}
-	
 }

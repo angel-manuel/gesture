@@ -27,17 +27,12 @@ public class ArticuloView extends View {
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
-		this.render();
-	}
-	
-	public void render() {
-		this.removeAll();
 		String precioBase;
 		String fechaAdquisicion;
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String costeAdquisicion;
 
-		JLabel articuloLbl = new JLabel("Articulo: ");
+		JLabel articuloLbl = new JLabel(articulo.getTipo().toString() + ":");
 		JLabel descripcionLbl = new JLabel(articulo.getDescripcion());
 		JLabel precioBaseLbl = new JLabel (precioBase = Double.toString(articulo.getPrecioBase()));
 		JLabel añoLbl = new JLabel (articulo.getAño());
@@ -52,5 +47,4 @@ public class ArticuloView extends View {
 		
 		this.setSize(new Dimension(200, 24*this.getComponentCount()));
 	}
-
 }
