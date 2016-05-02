@@ -24,7 +24,6 @@ public class ColeccionArticulosView extends View {
 		super();
 		this.coleccion = coleccion;
 		this.setPreferredSize(new Dimension(500, 80));
-		this.setSize(new Dimension(300, 300));
 		
 		table = new JTable(this.coleccion);
 		
@@ -32,18 +31,18 @@ public class ColeccionArticulosView extends View {
 		table.getSelectionModel()
 		.addListSelectionListener(new ListSelectionListener() {
 			@Override
-			public void valueChanged(ListSelectionEvent arg0) {
+			public void valueChanged(ListSelectionEvent e) {
 				Articulo articulo = getSelectedArticulo();
-				if (articulo != null) {
+				if (articulo != null && !e.getValueIsAdjusting()) {
 					for (Consumer<Articulo> listener: selectionListeners) {
 						listener.accept(articulo);
 					}
 				}
 			}});
 		
-		//table.setPreferredScrollableViewportSize(new Dimension(500, 200));
+		table.setPreferredScrollableViewportSize(new Dimension(500, 200));
 		this.add(new JScrollPane(table));
-		this.setPreferredSize(new Dimension(500, 200));
+		this.setPreferredSize(new Dimension(550, 250));
 	}
 	
 	public Articulo getSelectedArticulo() {

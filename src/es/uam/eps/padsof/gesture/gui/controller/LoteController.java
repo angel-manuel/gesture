@@ -41,11 +41,10 @@ public class LoteController extends Controller {
 		((ColeccionArticulosView)selectDialog.getControladorActual().getView())
 			.addSelectionListener(articulo -> { 
 				lote.añadirArticulo(articulo);
-				selectDialog.setVisible(false);
+				selectDialog.dispose();
+				view.setPrecioTotal(lote.getPrecioBase());
 			});
 		selectDialog.pack();
 		selectDialog.setVisible(true);
-		
-		view.setPrecioTotal(lote.getPrecioBase());
 	}
 }

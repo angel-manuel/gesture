@@ -1,5 +1,6 @@
 package es.uam.eps.padsof.gesture.gui.view;
 
+import java.awt.Dimension;
 import java.util.Date;
 
 import javax.swing.JFrame;
@@ -7,10 +8,13 @@ import javax.swing.WindowConstants;
 
 import es.uam.eps.padsof.gesture.Articulo;
 import es.uam.eps.padsof.gesture.ArticuloVoluminoso;
+import es.uam.eps.padsof.gesture.Lote;
 import es.uam.eps.padsof.gesture.Menudencia;
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.Usuario;
 import es.uam.eps.padsof.gesture.exception.AutorizacionIncorrectaException;
+import es.uam.eps.padsof.gesture.gui.controller.LoginController;
+import es.uam.eps.padsof.gesture.gui.controller.LoteController;
 import es.uam.eps.padsof.gesture.gui.controller.VoidController;
 
 /**
@@ -35,8 +39,6 @@ public class ViewsTester {
 		precioFrame.add(new PrecioView(precio));
 		precioFrame.setVisible(true);*/
 		
-		/*MainFrame mainFrame = new MainFrame();
-		
 		Tienda tienda = new Tienda();
 		tienda.log("gerente", "roottoor");
 		try {
@@ -56,14 +58,11 @@ public class ViewsTester {
 		
 		tienda.logout();
 		
-		mainFrame.setControladorActual(new VoidController(new ColeccionArticulosView(tienda.getInventario())));
-		mainFrame.pack();
-		mainFrame.setVisible(true);*/
+		MainFrame mainFrame = new MainFrame();
 		
-		/*JFrame invenFrame = new JFrame("Invent");
-		invenFrame.setSize(700, 700);
-		invenFrame.add(new ColeccionArticulosView(tienda.getInventario()));
-		invenFrame.setVisible(true);*/
+		//mainFrame.setControladorActual(new LoteController(tienda, new Lote()));
+		mainFrame.setControladorActual(new LoginController(tienda));
+		mainFrame.setVisible(true);
 
 		/*LoginView view = new LoginView();
 		LoginController ctrl = new LoginController(tienda, view);
@@ -95,11 +94,11 @@ public class ViewsTester {
 		SubastaFrame.add(view);
 		SubastaFrame.setVisible(true);*/
 		
-		Menudencia menudencia = new Menudencia("Boina", 50.0, "1980", new Date(new Date().getTime()), 40.0, 10);
+		/*Menudencia menudencia = new Menudencia("Boina", 50.0, "1980", new Date(new Date().getTime()), 40.0, 10);
 		
 		MainFrame menudenciaFrame = new MainFrame();
 		menudenciaFrame.setControladorActual(new VoidController(new MenudenciaView(menudencia)));
-		menudenciaFrame.setVisible(true);
+		menudenciaFrame.setVisible(true);*/
 	}
 
 }

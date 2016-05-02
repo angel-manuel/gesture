@@ -17,11 +17,9 @@ import es.uam.eps.padsof.gesture.gui.view.LoginView;
 public class LoginController extends Controller {
 	private final Tienda tienda;
 	
-	public LoginController(Tienda tienda, LoginView view) {
-		super(view);
+	public LoginController(Tienda tienda) {
+		super(new LoginView());
 		this.tienda = tienda;
-		
-		view.setControlador(this);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -41,7 +39,12 @@ public class LoginController extends Controller {
 					JOptionPane.showMessageDialog(view, "Contraseña incorrecta", "Error de login", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				break;
+				
+				if (tienda.getUsuarioLogeado().isGerente()) {
+					this.frame.setControladorActual(new GerenteController(tienda));
+				} else {
+					this.frame.setControladorActual(new UsuarioController(tienda));
+				}
 		}
 	}
 }
