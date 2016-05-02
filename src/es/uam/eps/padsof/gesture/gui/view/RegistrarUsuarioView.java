@@ -15,6 +15,8 @@ import javax.swing.SpringLayout;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import es.uam.eps.padsof.gesture.gui.controller.Controller;
+
 /**
  * TODO: Descripcion del tipo
  *
@@ -74,7 +76,8 @@ public class RegistrarUsuarioView extends View{
 		setPreferredSize(new Dimension(300, 80));
 	}
 	
-	public void setControlador(final ActionListener c){
+	@Override
+	public void setControlador(final Controller c) {
 		nombreFld.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) { change();}
 			public void removeUpdate(DocumentEvent e) { change(); }
@@ -95,9 +98,9 @@ public class RegistrarUsuarioView extends View{
 		return new StringBuilder().append(passFld.getPassword()).toString();
 	}
 	
-	public void setUsuarioStatus(boolean correct) {
-		if (!correct) {
-			nombreFld.setBackground(new Color(20, 170, 0));
+	public void setUsuarioStatus(boolean exists) {
+		if (exists) {
+			nombreFld.setBackground(new Color(200, 40, 40));
 		} else {
 			nombreFld.setBackground(new Color(255, 255, 255));
 		}

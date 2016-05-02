@@ -21,14 +21,13 @@ import es.uam.eps.padsof.gesture.gui.view.RegistrarUsuarioView;
 public class RegistrarUsuarioController extends Controller{
 	private final Tienda tienda;
 	
-	public RegistrarUsuarioController(Tienda tienda, RegistrarUsuarioView view){
-		super(view);
+	public RegistrarUsuarioController(Tienda tienda){
+		super(new RegistrarUsuarioView());
 		this.tienda = tienda;
-		
-		view.setControlador(this);
 	}
 	
-	public void ActionPerformed(ActionEvent e) throws HeadlessException, AutorizacionIncorrectaException{
+	@Override
+	public void actionPerformed(ActionEvent e) {
 		String comm = e.getActionCommand();
 		RegistrarUsuarioView view = (RegistrarUsuarioView)this.view;
 		
@@ -41,9 +40,14 @@ public class RegistrarUsuarioController extends Controller{
 			String contraseña = view.getPassword();
 			Usuario user = new Usuario(nombre, contraseña);
 			
-			if (tienda.añadirUsuario(user)) {
-			} else {
-				JOptionPane.showMessageDialog(view, "Usuario Existente", "Error de registro", JOptionPane.ERROR_MESSAGE);
+			try {
+				if (tienda.añadirUsuario(user)) {
+				} else {
+					JOptionPane.showMessageDialog(view, "Usuario Existente", "Error de registro", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+			} catch (HeadlessException | AutorizacionIncorrectaException e1) {
+				e1.printStackTrace();
 				return;
 			}
 			

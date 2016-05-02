@@ -111,17 +111,16 @@ public class ViewsTester {
 			e.printStackTrace();
 		}
 		
-		RegistrarUsuarioView view = new RegistrarUsuarioView();
-		RegistrarUsuarioController ctrl = new RegistrarUsuarioController(tienda, view);
+		RegistrarUsuarioController ctrl = new RegistrarUsuarioController(tienda);
 		
 		mainFrame.setControladorActual(ctrl);
 		
 		mainFrame.setVisible(true);
 		
-		JFrame RegistrarUsuarioFrame = new JFrame("Registrar Usuario");
+		/*JFrame RegistrarUsuarioFrame = new JFrame("Registrar Usuario");
 		RegistrarUsuarioFrame.setSize(320, 150);
 		RegistrarUsuarioFrame.add(ctrl.getView());
-		RegistrarUsuarioFrame.setVisible(true);
+		RegistrarUsuarioFrame.setVisible(true);*/
 	}
 
 }
