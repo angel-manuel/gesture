@@ -6,11 +6,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SpringLayout;
 
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.Cliente;
 import es.uam.eps.padsof.gesture.gui.controller.Controller;
+import es.uam.eps.padsof.gesture.gui.model.ClienteTableModel;
 
 /**
  * TODO: Descripcion del tipo
@@ -27,7 +30,7 @@ public class ClientesView extends View {
 	public static final String CLIENT_DETAILS_COMMAND = "client details";
 	public static final String CLIENT_CONTRACT_COMMAND = "client contract";
 	
-	private final ListaClientesView cliLstView;
+	private final JTable cliTbl;
 
 	private final JButton addCliBtn;
 	private final JButton cliDetBtn;
@@ -38,7 +41,7 @@ public class ClientesView extends View {
 		
 		JLabel clientesLbl = new JLabel("Clientes:"); 
 		this.add(clientesLbl, BorderLayout.NORTH);
-		this.add(cliLstView = new ListaClientesView(tienda.getClientes()), BorderLayout.CENTER);
+		this.add(new JScrollPane(cliTbl = new JTable(new ClienteTableModel(tienda.getClientes()))), BorderLayout.CENTER);
 	
 		JPanel btnPnl = new JPanel();
 		btnPnl.setLayout(new BoxLayout(btnPnl, BoxLayout.Y_AXIS));
@@ -62,6 +65,6 @@ public class ClientesView extends View {
 	 * @return
 	 */
 	public Cliente getSelectedCliente() {
-		return cliLstView.getSelectedCliente();
+		return ((ClienteTableModel)cliTbl.getModel()).getClient(cliTbl.getSelectedRow());
 	};
 }
