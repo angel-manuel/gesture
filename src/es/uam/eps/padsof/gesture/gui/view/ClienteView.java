@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import es.uam.eps.padsof.gesture.Cliente;
 import es.uam.eps.padsof.gesture.PoliticaNotificacion;
 import es.uam.eps.padsof.gesture.gui.controller.Controller;
@@ -63,6 +64,7 @@ public class ClienteView extends View {
 		
 		JLabel politicaNotificacionLbl = new JLabel("Política de notificación:");
 		politicaNotificacionCombo = new JComboBox<>(PoliticaNotificacion.values());
+		politicaNotificacionCombo.setSelectedItem(cliente.getPoliticaNotificacion());
 		politicaNotificacionCombo.setEnabled(editable);
 		
 		layout.putConstraint(SpringLayout.WEST, nombreLbl, 20, SpringLayout.WEST, formPanel);
@@ -153,5 +155,16 @@ public class ClienteView extends View {
 	
 	public PoliticaNotificacion getPoliticaNotificacion() {
 		return politicaNotificacionCombo.getItemAt(politicaNotificacionCombo.getSelectedIndex());
+	}
+
+	public Cliente getCliente() throws InvalidEmailAddressException {
+		return new Cliente(
+			getNombre(),
+			getApellidos(),
+			getEmail(),
+			getDireccion(),
+			getCodigoPostal(),
+			getPoliticaNotificacion()
+		);
 	}
 }

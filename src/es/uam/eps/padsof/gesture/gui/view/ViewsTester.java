@@ -28,7 +28,6 @@ import es.uam.eps.padsof.gesture.gui.controller.LoteController;
 import es.uam.eps.padsof.gesture.gui.controller.RegistrarUsuarioController;
 import es.uam.eps.padsof.gesture.gui.controller.SubastaController;
 import es.uam.eps.padsof.gesture.gui.controller.VoidController;
-import es.uam.eps.padsof.gesture.gui.model.RegistrarUsuarioModel;
 import es.uam.eps.padsof.gesture.subasta.Subasta;
 
 /**

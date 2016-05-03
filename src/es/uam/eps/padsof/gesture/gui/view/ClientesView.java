@@ -26,6 +26,8 @@ public class ClientesView extends View {
 
 	private static final long serialVersionUID = 5391579914332563550L;
 	
+	private final Tienda tienda;
+	
 	public static final String ADD_CLIENT_COMMAND = "add client";
 	public static final String CLIENT_DETAILS_COMMAND = "client details";
 	public static final String CLIENT_CONTRACT_COMMAND = "client contract";
@@ -37,6 +39,8 @@ public class ClientesView extends View {
 	private final JButton contractBtn;
 
 	public ClientesView(Tienda tienda) {
+		this.tienda = tienda;
+		
 		this.setLayout(new BorderLayout());
 		
 		JLabel clientesLbl = new JLabel("Clientes:"); 
@@ -63,5 +67,9 @@ public class ClientesView extends View {
 
 	public Cliente getSelectedCliente() {
 		return ((ClienteTableModel)cliTbl.getModel()).getClient(cliTbl.getSelectedRow());
+	}
+
+	public void refresh() {
+		((ClienteTableModel)cliTbl.getModel()).setClients(tienda.getClientes());
 	};
 }
