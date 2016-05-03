@@ -44,7 +44,7 @@ public class LoginController extends Controller {
 				if (tienda.getUsuarioLogeado().isGerente()) {
 					this.frame.setControladorActual(new GerenteController(tienda));
 				} else {
-					this.frame.setControladorActual(new VoidController(new UsuarioView(tienda)));
+					this.frame.setControladorActual(new UsuarioController(tienda));
 				}
 		}
 	}

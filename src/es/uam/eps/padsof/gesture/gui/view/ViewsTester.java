@@ -27,6 +27,7 @@ import es.uam.eps.padsof.gesture.gui.controller.LoginController;
 import es.uam.eps.padsof.gesture.gui.controller.LoteController;
 import es.uam.eps.padsof.gesture.gui.controller.RegistrarUsuarioController;
 import es.uam.eps.padsof.gesture.gui.controller.SubastaController;
+import es.uam.eps.padsof.gesture.gui.controller.UsuarioController;
 import es.uam.eps.padsof.gesture.gui.controller.VoidController;
 import es.uam.eps.padsof.gesture.subasta.Subasta;
 
@@ -96,7 +97,7 @@ public class ViewsTester {
 		
 		//mainFrame.setControladorActual(new LoteController(tienda, new Lote()));
 		//mainFrame.setControladorActual(new LoginController(tienda));
-		mainFrame.setControladorActual(new VoidController(new UsuarioView(tienda)));
+		mainFrame.setControladorActual(new UsuarioController(tienda));
 		//mainFrame.setControladorActual(new SubastaController(tienda));
 		mainFrame.setVisible(true);
 

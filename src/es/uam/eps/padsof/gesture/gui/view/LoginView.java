@@ -2,6 +2,7 @@ package es.uam.eps.padsof.gesture.gui.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
@@ -35,6 +36,8 @@ public class LoginView extends View {
 	private final JButton loginBtn;
 	
 	public LoginView() {
+		JLabel gestureLbl = new JLabel("Gesture");
+		gestureLbl.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
 		JLabel userLbl = new JLabel("Username:");
 		userFld = new JTextField("");
 		userFld.setColumns(16);
@@ -48,11 +51,15 @@ public class LoginView extends View {
 
 		loginBtn = new JButton("Login");
 		
+		formPanel.add(gestureLbl);
 		formPanel.add(userLbl);
 		formPanel.add(userFld);
 		formPanel.add(passLbl);
 		formPanel.add(passFld);
 		formPanel.add(loginBtn);
+		
+		layout.putConstraint(SpringLayout.SOUTH, gestureLbl, -20, SpringLayout.VERTICAL_CENTER, formPanel);
+		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, gestureLbl, 0, SpringLayout.HORIZONTAL_CENTER, formPanel);
 		
 		layout.putConstraint(SpringLayout.WEST, userFld, 0, SpringLayout.HORIZONTAL_CENTER, formPanel);
 		layout.putConstraint(SpringLayout.SOUTH, userFld, 0, SpringLayout.VERTICAL_CENTER, formPanel);

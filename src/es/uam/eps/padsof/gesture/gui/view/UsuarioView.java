@@ -3,12 +3,14 @@ package es.uam.eps.padsof.gesture.gui.view;
 import java.awt.BorderLayout;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.gui.controller.ClientesController;
+import es.uam.eps.padsof.gesture.gui.controller.Controller;
 import es.uam.eps.padsof.gesture.gui.controller.InventarioController;
 import es.uam.eps.padsof.gesture.gui.controller.SubastasController;
 
@@ -21,14 +23,16 @@ import es.uam.eps.padsof.gesture.gui.controller.SubastasController;
  */
 public class UsuarioView extends View {
 	private static final long serialVersionUID = -2011686703563102934L;
-	private JPanel upperPanel;
-	private JTabbedPane tabs;
+	private final JPanel upperPanel;
+	private final JTabbedPane tabs;
+	private final JButton logoutBtn;
 	
 	public UsuarioView(Tienda tienda) {
 		setLayout(new BorderLayout());
 		
 		upperPanel = new JPanel();
 		upperPanel.add(new JLabel(tienda.getUsuarioLogeado().getNombre()));
+		upperPanel.add(logoutBtn = new JButton("Logout"));
 		
 		tabs = new JTabbedPane(JTabbedPane.TOP);
 		
@@ -41,5 +45,9 @@ public class UsuarioView extends View {
 		
 		this.add(upperPanel, BorderLayout.NORTH);
 		this.add(tabs, BorderLayout.CENTER);
+	}
+	
+	public void setControlador(final Controller c) {
+		logoutBtn.addActionListener(c);
 	}
 }
