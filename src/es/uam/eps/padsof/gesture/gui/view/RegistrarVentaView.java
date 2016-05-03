@@ -30,13 +30,13 @@ public class RegistrarVentaView extends View{
 
 	private static final long serialVersionUID = 7269957199443823488L;
 	private final ColeccionArticulos coleccion;
-	private JTable table;
-	private List<Consumer<Articulo>> selectionListeners = new ArrayList<>();
 	private final JButton venderBtn;
 	
 	public RegistrarVentaView(ColeccionArticulos coleccion){
 		this.coleccion = coleccion;
 		this.setPreferredSize(new Dimension(500, 80));
+		
+		ColeccionArticulosView view = new ColeccionArticulosView(coleccion);
 		
 		JLabel articulosLbl = new JLabel("Articulos:");
 		
@@ -46,34 +46,13 @@ public class RegistrarVentaView extends View{
 
 		venderBtn = new JButton("Vender");
 		
-		
-		
-		
-		table = new JTable(this.coleccion);
-		
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.getSelectionModel()
-		.addListSelectionListener(new ListSelectionListener() {
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				Articulo articulo = getSelectedArticulo();
-				if (articulo != null && !e.getValueIsAdjusting()) {
-					for (Consumer<Articulo> listener: selectionListeners) {
-						listener.accept(articulo);
-					}
-				}
-			}});
-		
-		table.setPreferredScrollableViewportSize(new Dimension(500, 200));
-		JScrollPane artTable = new JScrollPane(table);
-		
-		layout.putConstraint(SpringLayout.NORTH, artTable, 20, SpringLayout.SOUTH, articulosLbl);
 		layout.putConstraint(SpringLayout.WEST, articulosLbl, 250, SpringLayout.WEST, formPanel);
-		layout.putConstraint(SpringLayout.NORTH, venderBtn, 20, SpringLayout.SOUTH, artTable);
+		layout.putConstraint(SpringLayout.NORTH, view, 20, SpringLayout.SOUTH, articulosLbl);
 		layout.putConstraint(SpringLayout.WEST, venderBtn, 250, SpringLayout.WEST, formPanel);
+		layout.putConstraint(SpringLayout.NORTH, venderBtn, 20, SpringLayout.SOUTH, view);
 		
 		formPanel.add(articulosLbl);
-		formPanel.add(artTable);
+		formPanel.add(view);
 		formPanel.add(venderBtn);
 		
 		formPanel.setPreferredSize(new Dimension(550, 250));
@@ -83,19 +62,4 @@ public class RegistrarVentaView extends View{
 		setMinimumSize(new Dimension(300, 80));
 		setMaximumSize(new Dimension(300, 80));
 	}
-	
-	public Articulo getSelectedArticulo() {
-		int selectedRow = table.getSelectedRow();
-		
-		if (selectedRow >= 0) {
-			return coleccion.get(selectedRow);
-		} else {
-			return null;
-		}
-	}
-	
-	public void addSelectionListener(Consumer<Articulo> listener) {
-		selectionListeners.add(listener);
-	}
-
 }
