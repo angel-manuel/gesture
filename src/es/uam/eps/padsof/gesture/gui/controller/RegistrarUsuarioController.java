@@ -51,6 +51,7 @@ public class RegistrarUsuarioController extends Controller{
 				return;
 			}
 			
+			frame.dispose();
 		}
 	}
 }

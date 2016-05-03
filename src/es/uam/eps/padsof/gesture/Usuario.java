@@ -104,4 +104,10 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 	public int compareTo(Usuario otro) {
 		return nombre.compareTo(otro.nombre);
 	}
+	
+	@Override
+	public String toString() {
+		return nombre;
+	}
 }
+
