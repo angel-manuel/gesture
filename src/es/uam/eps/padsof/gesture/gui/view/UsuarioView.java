@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import es.uam.eps.padsof.gesture.Tienda;
+import es.uam.eps.padsof.gesture.gui.controller.ClientesController;
 import es.uam.eps.padsof.gesture.gui.controller.InventarioController;
 
 /**
@@ -32,6 +33,8 @@ public class UsuarioView extends View {
 		
 		InventarioController invCtrl = new InventarioController(tienda);
 		tabs.add("Inventario", invCtrl.getView());
+		ClientesController cliCtrl = new ClientesController(tienda);
+		tabs.add("Clientes", cliCtrl.getView());
 		
 		this.add(upperPanel, BorderLayout.NORTH);
 		this.add(tabs, BorderLayout.CENTER);

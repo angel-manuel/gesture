@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.gui.view.LoginView;
+import es.uam.eps.padsof.gesture.gui.view.UsuarioView;
 
 /**
  * TODO: Descripcion del tipo
@@ -43,7 +44,7 @@ public class LoginController extends Controller {
 				if (tienda.getUsuarioLogeado().isGerente()) {
 					this.frame.setControladorActual(new GerenteController(tienda));
 				} else {
-					this.frame.setControladorActual(new UsuarioController(tienda));
+					this.frame.setControladorActual(new VoidController(new UsuarioView(tienda)));
 				}
 		}
 	}

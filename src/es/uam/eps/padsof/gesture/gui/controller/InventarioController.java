@@ -23,7 +23,7 @@ import es.uam.eps.padsof.gesture.gui.view.ArticuloVoluminosoView;
 import es.uam.eps.padsof.gesture.gui.view.InventarioView;
 import es.uam.eps.padsof.gesture.gui.view.MenudenciaView;
 import es.uam.eps.padsof.gesture.gui.view.ObraDeArteView;
-import es.uam.eps.padsof.gesture.gui.view.ListClientesView;
+import es.uam.eps.padsof.gesture.gui.view.ListaClientesView;
 import es.uam.eps.padsof.gesture.gui.view.View;
 
 /**
@@ -57,7 +57,7 @@ public class InventarioController extends Controller {
 					return;
 				}
 				
-				ListClientesView selCliView = new ListClientesView(tienda.getClientes());
+				ListaClientesView selCliView = new ListaClientesView(tienda.getClientes());
 				JDialog cliDia = new JDialog(frame, true);
 				selCliView.addClientSelectedListener(cliente -> {
 					if (cliente != null) {
@@ -73,6 +73,7 @@ public class InventarioController extends Controller {
 					}
 				});
 				cliDia.add(selCliView);
+				cliDia.setSize(200, 400);
 				cliDia.setVisible(true);
 			}
 			break;

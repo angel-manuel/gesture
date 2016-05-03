@@ -2,7 +2,6 @@ package es.uam.eps.padsof.gesture.gui.view;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 import java.util.function.Consumer;
@@ -13,7 +12,6 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import es.uam.eps.padsof.gesture.Articulo;
 import es.uam.eps.padsof.gesture.Cliente;
 
 /**
@@ -23,7 +21,7 @@ import es.uam.eps.padsof.gesture.Cliente;
  * @author Ángel Manuel Martín
  *
  */
-public class ListClientesView extends View {
+public class ListaClientesView extends View {
 
 	private static final long serialVersionUID = 3013456589547186563L;
 	
@@ -31,7 +29,7 @@ public class ListClientesView extends View {
 	private final List<Cliente> clientes;
 	private List<Consumer<Cliente>> selectionListeners = new ArrayList<>();
 
-	public ListClientesView(List<Cliente> clientes) {
+	public ListaClientesView(List<Cliente> clientes) {
 		this.clientes = clientes;
 		
 		cliLst = new JList<Cliente>(clientes.stream().collect(Collectors.toCollection(Vector::new)));
@@ -48,12 +46,12 @@ public class ListClientesView extends View {
 			}
 		});
 		
-		//cliLst.setPreferredSize(new Dimension(400, 200));
+		cliLst.setPreferredSize(new Dimension(400, 500));
 		
 		this.add(new JScrollPane(cliLst));
 	}
 	
-	private Cliente getSelectedCliente() {
+	public Cliente getSelectedCliente() {
 		int selectedInd = cliLst.getSelectedIndex();
 		
 		if (selectedInd >= 0) {

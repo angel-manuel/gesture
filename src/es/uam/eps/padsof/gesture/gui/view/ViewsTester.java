@@ -6,11 +6,14 @@ import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import es.uam.eps.padsof.gesture.Articulo;
 import es.uam.eps.padsof.gesture.ArticuloVoluminoso;
+import es.uam.eps.padsof.gesture.Cliente;
 import es.uam.eps.padsof.gesture.Lote;
 import es.uam.eps.padsof.gesture.Menudencia;
 import es.uam.eps.padsof.gesture.ObraDeArte;
+import es.uam.eps.padsof.gesture.PoliticaNotificacion;
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.TipoDeObra;
 import es.uam.eps.padsof.gesture.Usuario;
@@ -48,7 +51,9 @@ public class ViewsTester {
 		tienda.log("gerente", "roottoor");
 		try {
 			tienda.añadirUsuario(new Usuario("Borja", "abcdef123"));
-		} catch (AutorizacionIncorrectaException e) {
+			
+			tienda.añadirCliente(new Cliente("Cli", "Perez", "cli@eee.com", "", "", PoliticaNotificacion.Siempre));
+		} catch (AutorizacionIncorrectaException | InvalidEmailAddressException e) {
 			e.printStackTrace();
 		}
 		
@@ -63,10 +68,13 @@ public class ViewsTester {
 		
 		tienda.logout();
 		
+		tienda.log("Borja", "abcdef123");
+		
 		MainFrame mainFrame = new MainFrame();
 		
 		//mainFrame.setControladorActual(new LoteController(tienda, new Lote()));
-		mainFrame.setControladorActual(new LoginController(tienda));
+		//mainFrame.setControladorActual(new LoginController(tienda));
+		mainFrame.setControladorActual(new VoidController(new UsuarioView(tienda)));
 		//mainFrame.setControladorActual(new SubastaController(tienda));
 		mainFrame.setVisible(true);
 

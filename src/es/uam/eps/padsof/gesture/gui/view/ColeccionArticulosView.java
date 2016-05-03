@@ -38,10 +38,8 @@ public class ColeccionArticulosView extends View {
 				}
 			}});
 		
-		//table.setPreferredScrollableViewportSize(new Dimension(500, 200));
 		table.setFillsViewportHeight(true);
 		this.add(new JScrollPane(table));
-		//this.setPreferredSize(new Dimension(550, 250));
 	}
 	
 	public Articulo getSelectedArticulo() {
