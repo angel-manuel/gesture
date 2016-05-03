@@ -13,7 +13,7 @@ import es.uam.eps.padsof.gesture.balance.VentaContrato;
  */
 public class ContratoPreferente extends Contrato {
 	private static final long serialVersionUID = 20160329L;
-	private static final double PRECIO = 100.0;
+	public static final double PRECIO = 100.0;
 	
 	@Override
 	public VentaContrato generarVenta() {

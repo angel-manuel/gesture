@@ -20,14 +20,14 @@ public class ContratoView extends View{
 
 	private static final long serialVersionUID = -4986480833904432258L;
 	
-	public ContratoView(Contrato contrato){
+	public ContratoView(Contrato contrato) {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String tipo;
 		
 		if (contrato instanceof ContratoEstandar){
 			tipo = "Contrato Estandar";
-		}else{
+		} else {
 			tipo = "Contrato Preferente";
 		}
 		

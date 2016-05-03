@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.JOptionPane;
+
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import es.uam.eps.padsof.gesture.Cliente;
 import es.uam.eps.padsof.gesture.PoliticaNotificacion;
@@ -63,6 +65,27 @@ public class ClientesController extends Controller {
 				cliDetDia.setVisible(true);
 			}
 			break;
+		case ClientesView.CLIENT_CONTRACT_COMMAND:
+			if (selCli == null) {
+				JOptionPane.showMessageDialog(frame, "Seleccione cliente", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			MainFrame otoConCtrl = new MainFrame("Otorgar contrato");
+			otoConCtrl.setControladorActual(new OtorgarContratoController(selCli));
+			otoConCtrl.addWindowListener(new WindowListener() {
+				@Override public void windowOpened(WindowEvent e) {}
+				@Override public void windowClosing(WindowEvent e) {}
+				@Override public void windowClosed(WindowEvent e) {
+					view.refresh();
+					view.repaint();
+				}
+				@Override public void windowIconified(WindowEvent e) {}
+				@Override public void windowDeiconified(WindowEvent e) {}
+				@Override public void windowActivated(WindowEvent e) {}
+				@Override public void windowDeactivated(WindowEvent e) {}
+			});
+			otoConCtrl.setVisible(true);
 		default:
 			break;
 		}

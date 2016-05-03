@@ -63,6 +63,7 @@ public class ClientesView extends View {
 	public void setControlador(final Controller c) {
 		addCliBtn.addActionListener(c);
 		cliDetBtn.addActionListener(c);
+		contractBtn.addActionListener(c);
 	}
 
 	public Cliente getSelectedCliente() {

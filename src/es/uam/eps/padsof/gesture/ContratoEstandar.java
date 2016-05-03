@@ -13,7 +13,7 @@ import es.uam.eps.padsof.gesture.balance.VentaContrato;
  */
 public class ContratoEstandar extends Contrato {
 	private static final long serialVersionUID = 20160329L;
-	private static final double PRECIO = 25.0;
+	public static final double PRECIO = 25.0;
 	private static final double UMBRAL_GASTO = 200.0;private static final int UMBRAL_PARTICIPACIONES = 6;
 	private double gastoAcumulado = 0.0;
 	private int participaciones = 0;
