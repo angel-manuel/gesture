@@ -23,7 +23,6 @@ public class ColeccionArticulosView extends View {
 	public ColeccionArticulosView(ColeccionArticulos coleccion) {
 		super();
 		this.coleccion = coleccion;
-		this.setPreferredSize(new Dimension(500, 80));
 		
 		table = new JTable(this.coleccion);
 		
@@ -40,9 +39,10 @@ public class ColeccionArticulosView extends View {
 				}
 			}});
 		
-		table.setPreferredScrollableViewportSize(new Dimension(500, 200));
+		//table.setPreferredScrollableViewportSize(new Dimension(500, 200));
+		table.setFillsViewportHeight(true);
 		this.add(new JScrollPane(table));
-		this.setPreferredSize(new Dimension(550, 250));
+		//this.setPreferredSize(new Dimension(550, 250));
 	}
 	
 	public Articulo getSelectedArticulo() {

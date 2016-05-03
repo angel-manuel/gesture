@@ -1,5 +1,6 @@
 package es.uam.eps.padsof.gesture;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.text.ParseException;
@@ -90,6 +91,17 @@ public class Inventario extends ColeccionArticulosMutable implements Serializabl
 	 */
 	public void cargarArticulosDeArchivo(String filename) throws IOException, ParseException {
 		ArticulosReader ar = new ArticulosReader(filename);
+		
+		añadirArticulos(ar.leerTodo());
+	}
+
+	/**
+	 * Cargar artículos de archivo.
+	 *
+	 * @param file Archivo a cargar
+	 */
+	public void cargarArticulosDeArchivo(File file) throws IOException, ParseException {
+		ArticulosReader ar = new ArticulosReader(file);
 		
 		añadirArticulos(ar.leerTodo());
 	}

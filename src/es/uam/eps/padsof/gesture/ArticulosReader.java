@@ -1,6 +1,7 @@
 package es.uam.eps.padsof.gesture;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
@@ -15,7 +16,7 @@ import java.util.Date;
  * @author Ángel Manuel Martín
  */
 public class ArticulosReader {
-	private final String filename;
+	private final File file;
 
 	/**
 	 * Constructor de ArticulosReader.
@@ -23,9 +24,18 @@ public class ArticulosReader {
 	 * @param filename Nombre del archivo a leer
 	 */
 	public ArticulosReader(String filename) {
-		this.filename = filename;
+		this.file = new File(filename);
 	}
 	
+	/**
+	 * Constructor de ArticulosReader
+	 *
+	 * @param file
+	 */
+	public ArticulosReader(File file) {
+		this.file = file;
+	}
+
 	/**
 	 * Lee el fichero de articulos.
 	 *
@@ -33,7 +43,7 @@ public class ArticulosReader {
 	 */
 	public ColeccionArticulos leerTodo() throws IOException, ParseException {
 		ColeccionArticulosMutable col = new ColeccionArticulosMutable();
-		BufferedReader in = new BufferedReader(new FileReader(filename));
+		BufferedReader in = new BufferedReader(new FileReader(file));
 		
 		while (true) {
 			String line = in.readLine();

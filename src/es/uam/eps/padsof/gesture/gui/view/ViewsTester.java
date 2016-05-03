@@ -44,7 +44,7 @@ public class ViewsTester {
 		precioFrame.add(new PrecioView(precio));
 		precioFrame.setVisible(true);*/
 		
-		/*Tienda tienda = new Tienda();
+		Tienda tienda = new Tienda();
 		tienda.log("gerente", "roottoor");
 		try {
 			tienda.añadirUsuario(new Usuario("Borja", "abcdef123"));
@@ -63,12 +63,12 @@ public class ViewsTester {
 		
 		tienda.logout();
 		
-		MainFrame mainFrame = new MainFrame();*/
+		MainFrame mainFrame = new MainFrame();
 		
 		//mainFrame.setControladorActual(new LoteController(tienda, new Lote()));
-		//mainFrame.setControladorActual(new LoginController(tienda));
+		mainFrame.setControladorActual(new LoginController(tienda));
 		//mainFrame.setControladorActual(new SubastaController(tienda));
-		//mainFrame.setVisible(true);
+		mainFrame.setVisible(true);
 
 		/*LoginView view = new LoginView();
 		LoginController ctrl = new LoginController(tienda, view);
@@ -122,7 +122,7 @@ public class ViewsTester {
 		RegistrarUsuarioFrame.add(ctrl.getView());
 		RegistrarUsuarioFrame.setVisible(true);*/
 		
-		Tienda tienda = new Tienda();
+		/*Tienda tienda = new Tienda();
 		
 		tienda.getInventario().añadirArticulo(new Menudencia("Cosa", 50, "1994", new Date(), 0, 0));
 		tienda.getInventario().añadirArticulo(new Menudencia("Llave", 30, "1945", new Date(), 30, 03));
@@ -134,7 +134,7 @@ public class ViewsTester {
 		JFrame registrarVentaFrame = new JFrame("Registrar Venta");
 		registrarVentaFrame.setSize(600, 400);
 		registrarVentaFrame.add(view);
-		registrarVentaFrame.setVisible(true);
+		registrarVentaFrame.setVisible(true);*/
 	}
 
 }
