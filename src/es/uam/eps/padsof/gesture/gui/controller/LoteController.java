@@ -36,7 +36,7 @@ public class LoteController extends Controller {
 	public void actionPerformed(ActionEvent e) {
 		LoteView view = (LoteView)this.getView();
 		
-		MainFrame selectDialog = new MainFrame();
+		MainFrame selectDialog = new MainFrame("Selecciona articulo");
 		ColeccionArticulosView colView = new ColeccionArticulosView(tienda.getInventario());
 		selectDialog.add(colView);
 		colView.addSelectionListener(articulo -> { 

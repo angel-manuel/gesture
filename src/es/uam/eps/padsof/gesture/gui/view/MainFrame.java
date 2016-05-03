@@ -19,8 +19,8 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 2314913083107430405L;
 	private Controller controladorActual;
 	
-	public MainFrame() {
-		super("Gesture");
+	public MainFrame(String name) {
+		super(name);
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}

@@ -93,7 +93,7 @@ public class ViewsTester {
 		
 		tienda.log("Borja", "abcdef123");
 		
-		MainFrame mainFrame = new MainFrame();
+		MainFrame mainFrame = new MainFrame("Gesture");
 		
 		//mainFrame.setControladorActual(new LoteController(tienda, new Lote()));
 		//mainFrame.setControladorActual(new LoginController(tienda));

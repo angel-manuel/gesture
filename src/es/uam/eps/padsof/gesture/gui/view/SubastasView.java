@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import es.uam.eps.padsof.gesture.Tienda;
@@ -25,12 +26,12 @@ public class SubastasView extends View {
 	
 	private final Tienda tienda;
 	
-	public static final String SUBSCRIBE_COMMAND = "subscribe";
+	public static final String PARTICIPATE_COMMAND = "participate";
 	public static final String PUJAR_COMMAND = "pujar";
 	
 	private final JTable subTbl;
 	
-	private final JButton subBtn;
+	private final JButton parBtn;
 	private final JButton pujBtn;
 
 	public SubastasView(Tienda tienda) {
@@ -40,13 +41,13 @@ public class SubastasView extends View {
 		
 		subTbl = new JTable(new SubastasTableModel(tienda.getSubastas()));
 		
-		this.add(subTbl, BorderLayout.CENTER);
+		this.add(new JScrollPane(subTbl), BorderLayout.CENTER);
 		
 		JPanel btnPnl = new JPanel();
 		btnPnl.setLayout(new BoxLayout(btnPnl, BoxLayout.Y_AXIS));
 		
-		btnPnl.add(subBtn = new JButton("Subscribir"));
-		subBtn.setActionCommand(SUBSCRIBE_COMMAND);
+		btnPnl.add(parBtn = new JButton("Participar"));
+		parBtn.setActionCommand(PARTICIPATE_COMMAND);
 		btnPnl.add(pujBtn = new JButton("Pujar"));
 		pujBtn.setActionCommand(PUJAR_COMMAND);
 		
@@ -54,7 +55,7 @@ public class SubastasView extends View {
 	}
 	
 	public void setControlador(final Controller c) {
-		subBtn.addActionListener(c);
+		parBtn.addActionListener(c);
 		pujBtn.addActionListener(c);
 	}
 

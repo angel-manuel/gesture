@@ -19,13 +19,11 @@ import es.uam.eps.padsof.gesture.subasta.Subasta;
  * @author Ángel Manuel Martín
  *
  */
-public class RegistrarPuja extends Controller {
-	private final Tienda tienda;
+public class RegistrarPujaController extends Controller {
 	private final Subasta subasta;
 
-	public RegistrarPuja(Tienda tienda, Subasta subasta) {
+	public RegistrarPujaController(Tienda tienda, Subasta subasta) {
 		super(new RegistrarPujaView(tienda, subasta));
-		this.tienda = tienda;
 		this.subasta = subasta;
 	}
 
@@ -37,11 +35,13 @@ public class RegistrarPuja extends Controller {
 		
 		if (c != null && valor != null) {
 			try {
-				subasta.pujar(new Puja(c, valor));
+				subasta.pujar(new Puja(c, valor.doubleValue()));
 			} catch (PujaRechazadaException e1) {
 				JOptionPane.showMessageDialog(frame, e1.getMotivo(), "Puja rechazada", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
+			
+			frame.dispose();
 		}
 	}
 }
