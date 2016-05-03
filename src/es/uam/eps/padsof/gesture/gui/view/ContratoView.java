@@ -26,7 +26,7 @@ public class ContratoView extends View{
 		String tipo;
 		
 		if (contrato instanceof ContratoEstandar){
-			tipo = "Contraro Estandar";
+			tipo = "Contrato Estandar";
 		}else{
 			tipo = "Contrato Preferente";
 		}
