@@ -6,24 +6,30 @@ import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import es.uam.eps.padsof.gesture.Articulo;
 import es.uam.eps.padsof.gesture.ArticuloVoluminoso;
 import es.uam.eps.padsof.gesture.Cliente;
+import es.uam.eps.padsof.gesture.ContratoPreferente;
 import es.uam.eps.padsof.gesture.Lote;
 import es.uam.eps.padsof.gesture.Menudencia;
 import es.uam.eps.padsof.gesture.ObraDeArte;
+import es.uam.eps.padsof.gesture.ObraDeArteDestino;
 import es.uam.eps.padsof.gesture.PoliticaNotificacion;
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.TipoDeObra;
 import es.uam.eps.padsof.gesture.Usuario;
 import es.uam.eps.padsof.gesture.exception.AutorizacionIncorrectaException;
+import es.uam.eps.padsof.gesture.exception.NoAñadidoATiendaException;
+import es.uam.eps.padsof.gesture.exception.NoEstaEnInventarioException;
 import es.uam.eps.padsof.gesture.gui.controller.LoginController;
 import es.uam.eps.padsof.gesture.gui.controller.LoteController;
 import es.uam.eps.padsof.gesture.gui.controller.RegistrarUsuarioController;
 import es.uam.eps.padsof.gesture.gui.controller.SubastaController;
 import es.uam.eps.padsof.gesture.gui.controller.VoidController;
 import es.uam.eps.padsof.gesture.gui.model.RegistrarUsuarioModel;
+import es.uam.eps.padsof.gesture.subasta.Subasta;
 
 /**
  * TODO: Descripcion del tipo
@@ -52,10 +58,17 @@ public class ViewsTester {
 		try {
 			tienda.añadirUsuario(new Usuario("Borja", "abcdef123"));
 			
-			tienda.añadirCliente(new Cliente("Cli", "Perez", "cli@eee.com", "", "", PoliticaNotificacion.Siempre));
-		} catch (AutorizacionIncorrectaException | InvalidEmailAddressException e) {
+			Cliente cliPerez = new Cliente("Cli", "Perez", "cli@eee.com", "", "", PoliticaNotificacion.Siempre);
+			tienda.añadirCliente(cliPerez);
+			cliPerez.otorgarContrato(new ContratoPreferente());
+		} catch (AutorizacionIncorrectaException | InvalidEmailAddressException | NoAñadidoATiendaException e) {
 			e.printStackTrace();
 		}
+		
+		ObraDeArte obraSub = new ObraDeArte("Rojo y blanco", 240, "GGG", new Date(), 40, "John", TipoDeObra.Pintura, true);
+		obraSub.setDestino(ObraDeArteDestino.Subasta);
+		
+		tienda.getInventario().añadirArticulo(obraSub);
 		
 		tienda.getInventario().añadirArticulo(new Menudencia("Cosa", 50, "1994", new Date(), 0, 0));
 		tienda.getInventario().añadirArticulo(new Menudencia("Llave", 30, "1945", new Date(), 30, 03));
@@ -64,6 +77,16 @@ public class ViewsTester {
 		
 		for (int i = 0; i < 10; ++i) {
 			tienda.getInventario().añadirArticulo(new Menudencia("Basura", 1, "Desconocido", new Date(), 30, 03));
+		}
+		
+		try {
+			tienda.añadirSubasta(new Subasta(obraSub, new Date(), 10));
+		} catch (FailedInternetConnectionException
+				| AutorizacionIncorrectaException
+				| NoAñadidoATiendaException
+				| NoEstaEnInventarioException e) {
+			e.printStackTrace();
+			return;
 		}
 		
 		tienda.logout();

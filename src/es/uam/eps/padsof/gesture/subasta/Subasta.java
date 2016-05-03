@@ -360,4 +360,15 @@ public class Subasta implements Serializable {
 			tienda.getSubastas().remove(this);
 		}
 	}
+
+	/**
+	 * Getter de ultimaPuja
+	 *
+	 * @return el ultimaPuja de Subasta
+	 */
+	public Puja getUltimaPuja() {
+		return ultimaPuja;
+	}
+	
+	
 }

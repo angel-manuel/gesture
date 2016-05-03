@@ -15,4 +15,9 @@ public interface Subastable extends Vendible {
      * @return si el objeto se puede subastar ahora.
      */
 	public boolean isDisponibleParaSubasta();
+
+	/**
+	 * @return
+	 */
+	public String getDescripcion();
 }

@@ -21,7 +21,7 @@ import es.uam.eps.padsof.gesture.Cliente;
  * @author Ángel Manuel Martín
  *
  */
-public class ListaClientesView extends View {
+public class ListaClientesView extends JScrollPane {
 
 	private static final long serialVersionUID = 3013456589547186563L;
 	
@@ -48,7 +48,7 @@ public class ListaClientesView extends View {
 		
 		cliLst.setPreferredSize(new Dimension(400, 500));
 		
-		this.add(new JScrollPane(cliLst));
+		this.setViewportView(cliLst);
 	}
 	
 	public Cliente getSelectedCliente() {

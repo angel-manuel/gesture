@@ -13,7 +13,7 @@ import javax.swing.event.ListSelectionListener;
 import es.uam.eps.padsof.gesture.Articulo;
 import es.uam.eps.padsof.gesture.ColeccionArticulos;
 
-public class ColeccionArticulosView extends View {
+public class ColeccionArticulosView extends JScrollPane {
 	private static final long serialVersionUID = -5082367301518818759L;
 	private ColeccionArticulos coleccion;
 	private JTable table;
@@ -39,7 +39,7 @@ public class ColeccionArticulosView extends View {
 			}});
 		
 		table.setFillsViewportHeight(true);
-		this.add(new JScrollPane(table));
+		this.setViewportView(table);
 	}
 	
 	public Articulo getSelectedArticulo() {

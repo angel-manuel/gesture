@@ -37,9 +37,9 @@ public class LoteController extends Controller {
 		LoteView view = (LoteView)this.getView();
 		
 		MainFrame selectDialog = new MainFrame();
-		selectDialog.setControladorActual(new VoidController(new ColeccionArticulosView(tienda.getInventario())));
-		((ColeccionArticulosView)selectDialog.getControladorActual().getView())
-			.addSelectionListener(articulo -> { 
+		ColeccionArticulosView colView = new ColeccionArticulosView(tienda.getInventario());
+		selectDialog.add(colView);
+		colView.addSelectionListener(articulo -> { 
 				lote.añadirArticulo(articulo);
 				selectDialog.dispose();
 				view.setPrecioTotal(lote.getPrecioBase());

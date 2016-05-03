@@ -25,11 +25,13 @@ public class ClientesView extends View {
 	
 	public static final String ADD_CLIENT_COMMAND = "add client";
 	public static final String CLIENT_DETAILS_COMMAND = "client details";
+	public static final String CLIENT_CONTRACT_COMMAND = "client contract";
 	
 	private final ListaClientesView cliLstView;
 
 	private final JButton addCliBtn;
 	private final JButton cliDetBtn;
+	private final JButton contractBtn;
 
 	public ClientesView(Tienda tienda) {
 		this.setLayout(new BorderLayout());
@@ -44,6 +46,8 @@ public class ClientesView extends View {
 		addCliBtn.setActionCommand(ADD_CLIENT_COMMAND);
 		btnPnl.add(cliDetBtn = new JButton("Mostrar detalles"));
 		cliDetBtn.setActionCommand(CLIENT_DETAILS_COMMAND);
+		btnPnl.add(contractBtn = new JButton("Otorgar contrato"));
+		contractBtn.setActionCommand(CLIENT_CONTRACT_COMMAND);
 		
 		this.add(btnPnl, BorderLayout.EAST);
 	}

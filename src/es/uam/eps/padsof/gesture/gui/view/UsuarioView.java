@@ -10,6 +10,7 @@ import javax.swing.JTabbedPane;
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.gui.controller.ClientesController;
 import es.uam.eps.padsof.gesture.gui.controller.InventarioController;
+import es.uam.eps.padsof.gesture.gui.controller.SubastasController;
 
 /**
  * TODO: Descripcion del tipo
@@ -35,6 +36,8 @@ public class UsuarioView extends View {
 		tabs.add("Inventario", invCtrl.getView());
 		ClientesController cliCtrl = new ClientesController(tienda);
 		tabs.add("Clientes", cliCtrl.getView());
+		SubastasController subasCtrl = new SubastasController(tienda);
+		tabs.add("Subastas", subasCtrl.getView());
 		
 		this.add(upperPanel, BorderLayout.NORTH);
 		this.add(tabs, BorderLayout.CENTER);

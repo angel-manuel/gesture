@@ -93,8 +93,22 @@ public class Lote extends ColeccionArticulosMutable implements Subastable {
 	
 	@Override
 	public void devolverAInventario() throws NoAñadidoATiendaException {
-		for(Articulo articulo: articulos) {
+		for (Articulo articulo: articulos) {
 			articulo.devolverAInventario();
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see es.uam.eps.padsof.gesture.subasta.Subastable#getDescripcion()
+	 */
+	@Override
+	public String getDescripcion() {
+		String desc = "Lote(" + articulos.size() + "): ";
+		
+		for (Articulo articulo: articulos) {
+			desc += articulo.getDescripcion() + ", ";
+		}
+		
+		return desc;
 	}
 }
