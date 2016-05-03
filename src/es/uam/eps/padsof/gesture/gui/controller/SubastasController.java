@@ -5,6 +5,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.gui.view.MainFrame;
@@ -35,11 +36,16 @@ public class SubastasController extends Controller {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		SubastasView view = (SubastasView)this.view;
-		Subasta s = view.getSelectedSubasta();
+		Subasta subSel = view.getSelectedSubasta();
+		
+		if (subSel == null) {
+			JOptionPane.showMessageDialog(frame, "Seleccione una subasta", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		
 		switch (e.getActionCommand()) {
 		case SubastasView.PUJAR_COMMAND:
-			RegistrarPujaController pujCtrl = new RegistrarPujaController(tienda, s);
+			RegistrarPujaController pujCtrl = new RegistrarPujaController(tienda, subSel);
 			MainFrame pujDia = new MainFrame("Pujar");
 			pujDia.setControladorActual(pujCtrl);
 			pujDia.setSize(200, 400);
@@ -57,7 +63,7 @@ public class SubastasController extends Controller {
 			pujDia.setVisible(true);
 			break;
 		case SubastasView.PARTICIPATE_COMMAND:
-			ParticiparController parCtrl = new ParticiparController(tienda, s);
+			ParticiparController parCtrl = new ParticiparController(tienda, subSel);
 			MainFrame parDia = new MainFrame("Participar");
 			parDia.setControladorActual(parCtrl);
 			parDia.setSize(200, 400);

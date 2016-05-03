@@ -61,9 +61,6 @@ public class ClientesView extends View {
 		cliDetBtn.addActionListener(c);
 	}
 
-	/**
-	 * @return
-	 */
 	public Cliente getSelectedCliente() {
 		return ((ClienteTableModel)cliTbl.getModel()).getClient(cliTbl.getSelectedRow());
 	};

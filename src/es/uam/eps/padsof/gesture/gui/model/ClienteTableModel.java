@@ -70,7 +70,11 @@ public class ClienteTableModel extends AbstractTableModel implements TableModel 
 	 * @return
 	 */
 	public Cliente getClient(int selectedRow) {
-		return clientes.get(selectedRow);
+		try {
+			return clientes.get(selectedRow);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return null;
+		}
 	}
 
 }
