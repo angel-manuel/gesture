@@ -11,6 +11,7 @@ import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.gui.controller.ClientesController;
 import es.uam.eps.padsof.gesture.gui.controller.Controller;
 import es.uam.eps.padsof.gesture.gui.controller.InventarioController;
+import es.uam.eps.padsof.gesture.gui.controller.ObrasController;
 import es.uam.eps.padsof.gesture.gui.controller.SubastasController;
 import es.uam.eps.padsof.gesture.gui.controller.UsuariosController;
 
@@ -38,9 +39,9 @@ public class GerenteView extends View {
 		
 		UsuariosController usuCtrl = new UsuariosController(tienda);
 		tabs.add("Usuarios", usuCtrl.getView());
-		/*ObrasController obrasCtrl = new ObrasController(tienda);
+		ObrasController obrasCtrl = new ObrasController(tienda);
 		tabs.add("Obras de arte", obrasCtrl.getView());
-		LotesController lotCtrl = new LotesController(tienda);
+		/*LotesController lotCtrl = new LotesController(tienda);
 		tabs.add("Lotes", lotCtrl.getView());
 		SubastasGController subasCtrl = new SubastasGController(tienda);
 		tabs.add("Subastas", subasCtrl.getView());*/

@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import es.uam.eps.padsof.gesture.Tienda;

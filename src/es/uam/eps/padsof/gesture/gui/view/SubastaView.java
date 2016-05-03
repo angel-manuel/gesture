@@ -25,7 +25,6 @@ import es.uam.eps.padsof.gesture.gui.controller.LoteController;
 public class SubastaView extends View {
 	private static final long serialVersionUID = 1967547261297876738L;
 	private final JTextField precioSalidaFld;
-	private final LoteController loteCtrl;
 	private final JSpinner duracion;
 	private final JButton iniciarBtn;
 	
@@ -38,7 +37,6 @@ public class SubastaView extends View {
 		JLabel precioSalidaLbl = new JLabel("Precio de salida (en €): ");
 		precioSalidaFld = new JTextField("");
 		precioSalidaFld.setColumns(16);
-		loteCtrl = new LoteController(tienda, new Lote());
 		JLabel duracionLbl = new JLabel("Duración de la subasta (en días): ");
 		duracion = new JSpinner();
 		duracion.setSize(10, 20);
@@ -47,7 +45,6 @@ public class SubastaView extends View {
 		formPanel.add(precioSalidaLbl);
 		formPanel.add(precioSalidaFld);
 		formPanel.add(loteLbl);
-		formPanel.add(loteCtrl.getView());
 		formPanel.add(duracionLbl);
 		formPanel.add(duracion);
 		
@@ -55,9 +52,7 @@ public class SubastaView extends View {
 		layout.putConstraint(SpringLayout.NORTH, precioSalidaLbl, 20, SpringLayout.NORTH, formPanel);
 		layout.putConstraint(SpringLayout.NORTH, precioSalidaFld, 0, SpringLayout.NORTH, precioSalidaLbl);
 		layout.putConstraint(SpringLayout.WEST, precioSalidaFld, 100, SpringLayout.EAST, precioSalidaLbl);
-		layout.putConstraint(SpringLayout.WEST, loteCtrl.getView(), 20, SpringLayout.WEST, formPanel);
 		layout.putConstraint(SpringLayout.NORTH, loteLbl, 20, SpringLayout.SOUTH, precioSalidaLbl);
-		layout.putConstraint(SpringLayout.NORTH, loteCtrl.getView(), 20, SpringLayout.SOUTH, loteLbl);
 		layout.putConstraint(SpringLayout.WEST, loteLbl, 0, SpringLayout.WEST, precioSalidaLbl);
 		layout.putConstraint(SpringLayout.WEST, duracion, 0, SpringLayout.WEST, precioSalidaFld);
 		layout.putConstraint(SpringLayout.WEST, duracionLbl, 0, SpringLayout.WEST, precioSalidaLbl);
@@ -65,28 +60,21 @@ public class SubastaView extends View {
 		layout.putConstraint(SpringLayout.BASELINE, precioSalidaLbl, 0, SpringLayout.BASELINE, precioSalidaFld);
 		layout.putConstraint(SpringLayout.BASELINE, duracionLbl, 0, SpringLayout.BASELINE, duracion);
 		
-		//formPanel.setPreferredSize(new Dimension(200, 50));
-		
 		add(formPanel, BorderLayout.CENTER);
 		
 		JPanel subastaPanel = new JPanel();
 		iniciarBtn = new JButton("Iniciar Subasta");
 		subastaPanel.add(iniciarBtn);
 		add(subastaPanel, BorderLayout.SOUTH);
-		
-		//setPreferredSize(new Dimension(300, 80));
 	}
 	
 	@Override
 	public void setControlador(Controller c) {
+		iniciarBtn.addActionListener(c);
 	}
 	
-	public String getPrecioSalida(){
-		return precioSalidaFld.getText();
-	}
-	
-	public Lote getLoteSubasta() {
-		return loteCtrl.getLote();
+	public double getPrecioSalida(){
+		return Double.parseDouble(precioSalidaFld.getText());
 	}
 	
 	public int getDuracionSubasta(){

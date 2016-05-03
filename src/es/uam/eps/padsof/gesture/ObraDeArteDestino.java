@@ -10,5 +10,5 @@ import java.io.Serializable;
  *
  */
 public enum ObraDeArteDestino implements Serializable {
-	Reservado, Venta, Subasta
+	Venta, Subasta
 }

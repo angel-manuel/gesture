@@ -7,7 +7,6 @@ import java.awt.event.WindowListener;
 import es.uam.eps.padsof.gesture.Tienda;
 import es.uam.eps.padsof.gesture.gui.view.MainFrame;
 import es.uam.eps.padsof.gesture.gui.view.UsuariosView;
-import es.uam.eps.padsof.gesture.gui.view.View;
 
 /**
  * TODO: Descripcion del tipo

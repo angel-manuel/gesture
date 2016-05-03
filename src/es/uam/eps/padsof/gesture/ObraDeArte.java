@@ -16,7 +16,7 @@ public class ObraDeArte extends Articulo implements Subastable, Serializable {
 	private String autor;
 	private TipoDeObra tipoDeObra;
 	private boolean certificado;
-	private ObraDeArteDestino destino = ObraDeArteDestino.Reservado;
+	private ObraDeArteDestino destino = ObraDeArteDestino.Venta;
 	
 	/**
 	 * Constructor de ObraDeArte.
