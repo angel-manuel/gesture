@@ -2,6 +2,7 @@ package es.uam.eps.padsof.gesture.gui.view;
 
 import java.awt.BorderLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -38,6 +39,7 @@ public class ClientesView extends View {
 		this.add(cliLstView = new ListaClientesView(tienda.getClientes()), BorderLayout.CENTER);
 	
 		JPanel btnPnl = new JPanel();
+		btnPnl.setLayout(new BoxLayout(btnPnl, BoxLayout.Y_AXIS));
 		btnPnl.add(addCliBtn = new JButton("Añadir cliente"));
 		addCliBtn.setActionCommand(ADD_CLIENT_COMMAND);
 		btnPnl.add(cliDetBtn = new JButton("Mostrar detalles"));
