@@ -9,7 +9,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 import java.util.Iterator;
+import java.util.List;
 
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.gesture.balance.Balance;
@@ -203,8 +205,8 @@ public class Tienda implements Serializable {
 	 *
 	 * @return usuarios de Tienda
 	 */
-	public Collection<Usuario> getUsuarios() {
-		return usuarios;
+	public List<Usuario> getUsuarios() {
+		return usuarios.stream().collect(Collectors.toCollection(ArrayList::new));
 	}
 
 	/**
@@ -212,8 +214,8 @@ public class Tienda implements Serializable {
 	 *
 	 * @return clientes de Tienda
 	 */
-	public Collection<Cliente> getClientes() {
-		return clientes;
+	public List<Cliente> getClientes() {
+		return clientes.stream().collect(Collectors.toCollection(ArrayList::new));
 	}
 
 	/**
@@ -221,8 +223,8 @@ public class Tienda implements Serializable {
 	 *
 	 * @return subastas de Tienda
 	 */
-	public Collection<Subasta> getSubastas() {
-		return subastas;
+	public List<Subasta> getSubastas() {
+		return subastas.stream().collect(Collectors.toCollection(ArrayList::new));
 	}
 
 	/**
@@ -230,8 +232,8 @@ public class Tienda implements Serializable {
 	 *
 	 * @return lotesReservados de Tienda
 	 */
-	public Collection<Lote> getLotesReservados() {
-		return lotesReservados;
+	public List<Lote> getLotesReservados() {
+		return lotesReservados.stream().collect(Collectors.toCollection(ArrayList::new));
 	}
 	
 	/**

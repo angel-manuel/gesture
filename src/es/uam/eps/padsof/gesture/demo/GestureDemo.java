@@ -24,6 +24,7 @@ import es.uam.eps.padsof.gesture.Usuario;
 import es.uam.eps.padsof.gesture.balance.Venta;
 import es.uam.eps.padsof.gesture.balance.VentaContrato;
 import es.uam.eps.padsof.gesture.exception.AutorizacionIncorrectaException;
+import es.uam.eps.padsof.gesture.exception.NoALaVentaException;
 import es.uam.eps.padsof.gesture.exception.NoAñadidoATiendaException;
 import es.uam.eps.padsof.gesture.exception.NoEstaEnInventarioException;
 import es.uam.eps.padsof.gesture.exception.ParticipacionDuplicadaException;
@@ -193,7 +194,8 @@ public class GestureDemo {
 			Venta v3 = cliente1.comprar(botella); // Falla al intentar vender por un artículo vendido
 			System.out.println(v3);
 		} catch (NoAñadidoATiendaException 
-				| NoEstaEnInventarioException e) {
+				| NoEstaEnInventarioException
+				| NoALaVentaException e) {
 			e.printStackTrace();
 			System.out.println();
 		}

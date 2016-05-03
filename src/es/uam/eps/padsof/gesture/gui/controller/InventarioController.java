@@ -7,6 +7,7 @@ import java.text.ParseException;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import es.uam.eps.padsof.gesture.Articulo;
 import es.uam.eps.padsof.gesture.Tienda;
@@ -14,6 +15,7 @@ import es.uam.eps.padsof.gesture.Menudencia;
 import es.uam.eps.padsof.gesture.ArticuloVoluminoso;
 import es.uam.eps.padsof.gesture.ObraDeArte;
 import es.uam.eps.padsof.gesture.TipoDeArticulo;
+import es.uam.eps.padsof.gesture.exception.NoALaVentaException;
 import es.uam.eps.padsof.gesture.exception.NoAñadidoATiendaException;
 import es.uam.eps.padsof.gesture.exception.NoEstaEnInventarioException;
 import es.uam.eps.padsof.gesture.gui.view.ArticuloView;
@@ -21,6 +23,7 @@ import es.uam.eps.padsof.gesture.gui.view.ArticuloVoluminosoView;
 import es.uam.eps.padsof.gesture.gui.view.InventarioView;
 import es.uam.eps.padsof.gesture.gui.view.MenudenciaView;
 import es.uam.eps.padsof.gesture.gui.view.ObraDeArteView;
+import es.uam.eps.padsof.gesture.gui.view.ListClientesView;
 import es.uam.eps.padsof.gesture.gui.view.View;
 
 /**
@@ -40,31 +43,55 @@ public class InventarioController extends Controller {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Articulo artSel = ((InventarioView)view).getSelectedArticulo();
+		InventarioView view = ((InventarioView)this.view);
+		Articulo artSel = view.getSelectedArticulo();
 		
 		switch (e.getActionCommand()) {
+		case InventarioView.FILTER_CHANGED_COMMAND:
+			view.refreshFilter();
+			break;
 		case InventarioView.VENDER_COMMAND:
-			try {
-				artSel.retirarDeInventario();
-			} catch (NoAñadidoATiendaException | NoEstaEnInventarioException e1) {
-				e1.printStackTrace();
+			if (artSel != null) {
+				if (artSel.isALaVenta() == false) {
+					JOptionPane.showMessageDialog(frame, artSel.toString() + " no está a la venta", "Error en venta", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				ListClientesView selCliView = new ListClientesView(tienda.getClientes());
+				JDialog cliDia = new JDialog(frame, true);
+				selCliView.addClientSelectedListener(cliente -> {
+					if (cliente != null) {
+						try {
+							tienda.getBalance().registrarVenta(cliente.comprar(artSel));
+						} catch (Exception e1) {
+							e1.printStackTrace();
+							return;
+						}
+						
+						cliDia.dispose();
+						view.refreshFilter();
+					}
+				});
+				cliDia.add(selCliView);
+				cliDia.setVisible(true);
 			}
-			view.repaint();
 			break;
 		case InventarioView.DETALLES_COMMAND:
-			JDialog detDia = new JDialog(frame, true);
-			switch (artSel.getTipo()) {
-			case Menudencia:
-				detDia.add(new MenudenciaView((Menudencia)artSel));
-				break;
-			case Voluminoso:
-				detDia.add(new ArticuloVoluminosoView((ArticuloVoluminoso)artSel));
-				break;
-			case ObraDeArte:
-				detDia.add(new ObraDeArteView((ObraDeArte)artSel));
-				break;
+			if (artSel != null) {
+				JDialog detDia = new JDialog(frame, true);
+				switch (artSel.getTipo()) {
+				case Menudencia:
+					detDia.add(new MenudenciaView((Menudencia)artSel));
+					break;
+				case Voluminoso:
+					detDia.add(new ArticuloVoluminosoView((ArticuloVoluminoso)artSel));
+					break;
+				case ObraDeArte:
+					detDia.add(new ObraDeArteView((ObraDeArte)artSel));
+					break;
+				}
+				detDia.setVisible(true);
 			}
-			detDia.setVisible(true);
 			break;
 		case InventarioView.AÑADIR_COMMAND:
 			JFileChooser fc = new JFileChooser();
@@ -78,7 +105,7 @@ public class InventarioController extends Controller {
 					return;
 				}
 				
-				view.repaint();
+				view.refreshFilter();
 			}
 			
 			break;

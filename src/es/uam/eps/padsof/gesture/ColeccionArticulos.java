@@ -175,7 +175,7 @@ public class ColeccionArticulos extends AbstractTableModel implements Serializab
 				art.getTipo().toString(),
 				art.getDescripcion(),
 				art.getAño(),
-				art.getPrecioBase()
+				art.getPrecioBase(),
 		};
 		
 		return artRow[column];

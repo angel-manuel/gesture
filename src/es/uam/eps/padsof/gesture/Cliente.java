@@ -9,6 +9,7 @@ import es.uam.eps.padsof.gesture.balance.ConceptoPrecio;
 import es.uam.eps.padsof.gesture.balance.Precio;
 import es.uam.eps.padsof.gesture.balance.Venta;
 import es.uam.eps.padsof.gesture.balance.VentaContrato;
+import es.uam.eps.padsof.gesture.exception.NoALaVentaException;
 import es.uam.eps.padsof.gesture.exception.NoAñadidoATiendaException;
 import es.uam.eps.padsof.gesture.exception.NoEstaEnInventarioException;
 
@@ -61,10 +62,15 @@ public class Cliente implements Comparable<Cliente>, Serializable {
 	 * @return Venta
 	 * @throws NoAñadidoATiendaException Si el cliente no ha sido añadido a Tienda
 	 * @throws NoEstaEnInventarioException Si el objeto no está en inventario
+	 * @throws NoALaVentaException 
 	 */
-	public Venta comprar(Vendible vendible) throws NoAñadidoATiendaException, NoEstaEnInventarioException {
+	public Venta comprar(Vendible vendible) throws NoAñadidoATiendaException, NoEstaEnInventarioException, NoALaVentaException {
 		if (tienda == null) {
 			throw new NoAñadidoATiendaException();
+		}
+		
+		if (vendible.isALaVenta() == false) {
+			throw new NoALaVentaException(vendible);
 		}
 		
 		vendible.retirarDeInventario();

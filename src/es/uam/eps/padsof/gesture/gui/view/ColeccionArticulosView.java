@@ -1,6 +1,5 @@
 package es.uam.eps.padsof.gesture.gui.view;
 
-import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -16,7 +15,7 @@ import es.uam.eps.padsof.gesture.ColeccionArticulos;
 
 public class ColeccionArticulosView extends View {
 	private static final long serialVersionUID = -5082367301518818759L;
-	private final ColeccionArticulos coleccion;
+	private ColeccionArticulos coleccion;
 	private JTable table;
 	private List<Consumer<Articulo>> selectionListeners = new ArrayList<>();
 	
@@ -32,7 +31,7 @@ public class ColeccionArticulosView extends View {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				Articulo articulo = getSelectedArticulo();
-				if (articulo != null && !e.getValueIsAdjusting()) {
+				if (!e.getValueIsAdjusting()) {
 					for (Consumer<Articulo> listener: selectionListeners) {
 						listener.accept(articulo);
 					}
@@ -57,5 +56,25 @@ public class ColeccionArticulosView extends View {
 	
 	public void addSelectionListener(Consumer<Articulo> listener) {
 		selectionListeners.add(listener);
+	}
+
+	/**
+	 * Getter de coleccion
+	 *
+	 * @return el coleccion de ColeccionArticulosView
+	 */
+	public ColeccionArticulos getColeccion() {
+		return coleccion;
+	}
+
+	/**
+	 * Setter de coleccion
+	 *
+	 * @param coleccion el coleccion de ColeccionArticulosView
+	 */
+	public void setColeccion(ColeccionArticulos coleccion) {
+		this.coleccion = coleccion;
+		this.table.setModel(coleccion);
+		this.table.repaint();
 	}
 }
